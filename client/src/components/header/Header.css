@@ -1,0 +1,25 @@
+.header{
+    height: 90px;
+    width: 100%;
+    background-color: goldenrod;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo_header{
+    width: 90px;
+    height: 90px;
+    background-color: #e00000;
+    text-align: center;
+    line-height: 90px;
+    margin-left: 40px;
+}
+
+.button_container{
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px;
+    
+}
