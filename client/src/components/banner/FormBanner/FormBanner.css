@@ -31,4 +31,10 @@
 .form_banner_container button{
     height: 2rem;
     width: 8rem;
+    cursor: pointer;
+}
+
+.form_banner_container button:hover{
+    transition: 0.2s;
+    background-color: #D4AF37;
 }
