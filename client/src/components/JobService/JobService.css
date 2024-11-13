@@ -8,16 +8,27 @@
 }
 
 .service_container h2{
-    font-family: inter;
+    font-family:  Jaini Purva;
     color: white;
-    font-size: 8vh;
-    margin-right: 50vw;
-    margin-top: 50px;
+    font-size: 10vh;
+    margin-right: 15px;
+}
+
+.service_title{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: right;
+   width: 100%;
+}
+
+.golden_line{
+   width: 65%;
+ 
 }
 
 .angry-grid {
     display: grid; 
-
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     margin-top: 30px;
