@@ -8,7 +8,7 @@ export default function JobService() {
       <div className="golden_line"><img src="/img/GoldLine.png" alt="" /></div>
       </div>
       <>
-        <div class="angry-grid">
+        <div className="angry-grid">
           <div id="item-0">&nbsp;</div>
           <div id="item-1">&nbsp;</div>
           <div id="item-2">&nbsp;</div>
