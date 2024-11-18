@@ -11,6 +11,12 @@
     justify-content: space-evenly;
 }
 
+.form_banner_container input{
+ padding-left: 15px;
+ font-family: Inter;
+ font-size: 2vh;
+}
+
 #name_banner{
     width: 17rem;
     height: 2rem;

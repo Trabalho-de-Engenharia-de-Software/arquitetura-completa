@@ -4,21 +4,28 @@ import "./CSS/LoginPage.css"
 export default function LoginPage() {
   return (
     <div className='page_login_container'>
-      <div>
+    
+    <div className='arrow_container'><a href="/"><img src="./img/arrow_icon.png" alt="Seta dourada com a ponta indicando para o lado esquerdo, com a funcionalidade de voltar a index" /></a></div>
+
+      <div className='login_container'>
+
+      
           <div>
             <h2>Login</h2>
           </div>
-          <div>
+          <div className='container_form'>
             <form action="">
-              <input type="email" name="login_email" id="" />
-              <input type="password" name="password_email" id="" />
+              <input type="email" name="login_email" id=""  placeholder='Login'/>
+              <input type="password" name="password_email" id="" placeholder='Senha'/>
+              <button className='button_login'>Entrar</button>
             </form>
           </div>
+          <p>Não tem Cadastro? <a href="">Cadastre-se</a></p>
       </div>
 
       <div className='imagem_login'>
-        <div>
-
+        <div className='logo_login'>
+            <img src="" alt="" />
         </div>
       </div>
     </div>

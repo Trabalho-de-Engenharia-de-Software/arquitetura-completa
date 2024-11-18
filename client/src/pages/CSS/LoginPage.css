@@ -1,0 +1,131 @@
+*{
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.page_login_container{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100%;
+}
+
+
+.login_container{
+    position: relative;
+    background-color: #333;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow_container{
+    position: absolute;
+    z-index: 1;
+}
+
+.container_form{
+    display: flex;
+    height: 55vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.container_form form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50vh;
+    justify-content: space-evenly;
+}
+
+.login_container h2{
+    font-family: Jaini Purva;
+    font-size: 20vh;
+    color: #D4AF37;
+    text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000; /* Cor da borda */
+}
+
+.login_container input{
+    width: 30vw;
+    height: 8vh;
+    border: #D4AF37 solid 3px;
+    border-radius: 15px;
+    font-family: roboto;
+    font-size: 20px;
+    padding-left: 15px;
+}
+
+.login_container p{
+    color: #FFF;
+    font-family: inter;
+    font-size: 4vh;
+    display: flex;
+    align-items: center;
+}
+
+p a{
+    text-decoration: none;
+    color: #D4AF37;
+    font-family: jaini purva;
+    font-size: 5vh;
+    margin-left: 7px;
+}
+
+p a:hover{
+    color: #FFF;
+    text-shadow: 
+    -1px -1px 0 #D4AF37,  
+     1px -1px 0 #D4AF37,
+    -1px  1px 0 #D4AF37,
+     1px  1px 0 #D4AF37; /* Cor da borda */
+    transition: 0.5s;
+}
+
+.button_login{
+    height: 8vh;
+    width: 20vw;
+    background-color: #D4AF37;
+    color: #000;
+    font-family: Roboto;
+    font-size: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.button_login:hover{
+    background-color: #FFF;
+    border: 3px solid #D4AF37;
+    transition: 0.5s;
+}
+
+.imagem_login{
+    position: relative;
+    background-color: #D4AF37;
+    width: 50%;
+}
+
+
+.imagem_login{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo_login{
+    width: 20vw;
+    height: 45vh;
+    border-radius: 180px;
+    background-color: #FFF;
+}

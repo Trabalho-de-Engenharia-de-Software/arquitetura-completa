@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="conteudo_container_footer">
             <div className="button_container_footer">
               <h2>Agende Seu horário</h2>
-              <button>Agendar</button>
+              <a href="/login"><button>Agendar</button></a>
             </div>
             <div></div>
             <div></div>
