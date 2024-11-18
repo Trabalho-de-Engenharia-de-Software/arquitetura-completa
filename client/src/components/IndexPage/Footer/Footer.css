@@ -59,9 +59,13 @@
 }
 
 .Logo_footer{
-    background-color: #FFF;
-    width: 10vw;
-    height: 20vh;
+    width: 90px;
+    height: 90px;
+}
+
+.Logo_footer img {
+    height: 100%;
+    width: 100%;
 }
 
 .midia_container{

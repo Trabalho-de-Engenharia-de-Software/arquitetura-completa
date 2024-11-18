@@ -15,7 +15,7 @@ export default function Footer() {
             <div></div>
             <div className="container_footer">
               <div className="Logo_footer">
-                  logo
+                 <img src="./img/Logo.png" alt="" />
               </div>
 
               <div className="midia_container">

@@ -14,18 +14,18 @@ export default function LoginPage() {
             <h2>Login</h2>
           </div>
           <div className='container_form'>
-            <form action="">
+            <form>
               <input type="email" name="login_email" id=""  placeholder='Login'/>
               <input type="password" name="password_email" id="" placeholder='Senha'/>
               <button className='button_login'>Entrar</button>
             </form>
           </div>
-          <p>Não tem Cadastro? <a href="">Cadastre-se</a></p>
+          <p>Não tem Cadastro? <a href="/signin">Cadastre-se</a></p>
       </div>
 
       <div className='imagem_login'>
         <div className='logo_login'>
-            <img src="" alt="" />
+            <img src="./img/Logo.png" alt="Logo Barbearia" />
         </div>
       </div>
     </div>
