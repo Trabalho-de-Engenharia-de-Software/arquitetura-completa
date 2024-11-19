@@ -6,5 +6,6 @@ Depois de Fazer o clone do repositório abra o git bash ou algum terminal que po
 Após feito o segundo passo, digite no terminal "npm install" e espere baixar os arquivos npm. 
 Depois de baixar os arquivos dê o comando "npm run dev" e assim acesse o link que vai ser gerado no terminal. 
 
+OBS: Sempre quando começar a mexer, comece dando git pull, para assim quando for fazer git push, não venha dar merge, se der merge, me avisem para eu ajudar vocês
 
 PELO AMOR DE DEUS, SE DER RUIM, NÃO DÊ GIT PUSH <------------ LEMBRAR
