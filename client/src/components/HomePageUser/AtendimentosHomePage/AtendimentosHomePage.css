@@ -1,0 +1,21 @@
+.atendimento_container{
+    position: relative;
+    width: 100%;
+    height: 125vh;
+    background-color: #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.atendimento_container h2{
+    margin-top: 20px;
+    color: #D4AF37;
+    font-size: 10vh;
+    font-family: Jaini Purva;
+    text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000; /* Cor da borda */
+}
