@@ -1,4 +1,57 @@
 .FormAgendamento_Container{
-    width: 80%;
+    position: relative;
+    width: 90%;
+    height: 90vh;
+    border-radius: 25px;
     background-color: rgba(255, 255, 255, 0.404);
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.resumo_container{
+    display: flex;
+    width: 50%;
+    height: 15vh;
+    flex-direction: column;
+    justify-content: space-around; 
+}
+
+.data_form_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.h3_resumo{
+    color: #FFF;
+    font-family: inter;
+    font-size: 6vh;
+}
+
+.Label_container{
+    display: flex;
+    width: 65%;
+    height: 15vh;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.text_data{
+    font-size: 4vh;
+    color: #FFF;
+
+}
+
+.input_choice{
+    width: 90%;
+    height: 7.5vh;
+    border-radius: 15px;
+    font-size: 3.5vh;
+    padding-left: 15px;
 }

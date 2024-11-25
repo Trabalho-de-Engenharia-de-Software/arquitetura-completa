@@ -3,6 +3,7 @@ import HeaderHomePageUser from '../components/HomePageUser/HeaderHomePageUser/He
 import BannerHomePageUser from '../components/HomePageUser/BannerHomePageUser/BannerHomePageUser'
 import Footer from '../components/IndexPage/Footer/Footer'
 import AtendimentosHomePage from '../components/HomePageUser/AtendimentosHomePage/AtendimentosHomePage'
+import ServicesHomePage from '../components/HomePageUser/ServicesHomePage/ServicesHomePage'
 
 export default function HomePageUser() {
   return (
@@ -10,6 +11,7 @@ export default function HomePageUser() {
       <HeaderHomePageUser/>
       <BannerHomePageUser/>
       <AtendimentosHomePage/>
+      <ServicesHomePage/>
       <Footer/>
     </div>
   )

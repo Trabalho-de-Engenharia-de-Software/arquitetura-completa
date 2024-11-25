@@ -1,0 +1,25 @@
+.Services_Container{
+    width: 100%;
+    height: 90vh;
+    background-color: #333;
+}
+
+.Services_Container h2{
+    color: #D4AF37;
+    font-size: 10vh;
+    font-family: Jaini Purva;
+    margin-right: 15px;
+}
+
+.Title_service_container{
+    display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: right;
+   width: 100%;
+}
+
+.golden_line{
+    width: 65%;
+  
+ }
