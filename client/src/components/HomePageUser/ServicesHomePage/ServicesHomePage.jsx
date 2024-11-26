@@ -7,7 +7,9 @@ export default function ServicesHomePage() {
        <h2>Nossos Serviços:</h2>
        <div className="golden_line"><img src="/img/GoldLine.png" alt="" /></div>
       </div>
-
+        <div className='container_services_homeUser'>
+            
+        </div>
     </div>
   )
 }

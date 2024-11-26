@@ -1,6 +1,6 @@
 .Services_Container{
     width: 100%;
-    height: 90vh;
+    height: 150vh;
     background-color: #333;
 }
 
@@ -22,4 +22,12 @@
 .golden_line{
     width: 65%;
   
+ }
+
+ .container_services_homeUser{
+    width: 80%;
+    height: 90vh;
+    background-color: #d4d4d48f;
+    margin: 90px auto;
+    border-radius: 15px;
  }
