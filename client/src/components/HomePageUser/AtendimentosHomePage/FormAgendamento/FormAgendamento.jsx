@@ -1,5 +1,6 @@
 import './FormAgendamento.css';
 import { useState } from 'react';
+import Swal from 'sweetalert2'
 
 export default function FormAgendamento() {
   const [dataForm, setDataForm] = useState({
@@ -44,8 +45,33 @@ export default function FormAgendamento() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Feito o Agendamento");
-    console.log(dataForm);
+    Swal.fire(
+      {
+        title: 'Atenção',
+        text: 'Deseja fazer o agendamento?',
+        icon: 'question',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar Agendamento',
+        showConfirmButton: true,
+        confirmButtonText: 'Confirmar agendamento'
+      }).then((result) => {
+        if(result.isConfirmed) {
+          console.log(dataForm);
+          Swal.fire({
+            title: 'Agendamento Confirmado',
+            text: 'Agendamento marcado com sucesso',
+            icon: 'success'
+          })
+        } else {
+          Swal.fire({
+            title: 'Agendamento Excluido',
+            text: 'Agendamento Canelado com sucesso!',
+            icon: 'success'
+          })
+        }
+      })
+    
+    
   };
 
   return (
