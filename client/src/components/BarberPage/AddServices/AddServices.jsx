@@ -1,11 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./AddServices.css";
 import Swal from "sweetalert2";
 import AlertComponent from "./AlertComponent/AlertComponent";
 
 export default function AddServices() {
   const [servicos, setSevicos] = useState([]);
-  const [valorServico, SetValorServico] = useState();
+
+  //API
+  const url = "http://localhost:3000/servicos"
+
+
+  //Primeira parte da API, usando o fetch diretamente no código
+  useEffect (() => {
+    const fetchServicos = async () => {
+      const res = await fetch(url);
+      const data = await res.json();
+      setSevicos(data)
+    }
+
+    fetchServicos()
+    console.log(servicos)
+  }, [url])
+  //Fim da API com o JSON Server
 
   const handleAddService = () => {};
 
@@ -18,12 +34,12 @@ export default function AddServices() {
       </div>
 
       <div className="services_barber_container">
-        {servico.length == 0 ? (
+        {servicos.length == 0 ? (
           <AlertComponent/>
         ) : (
-          <div>
+          <div className="services_list_container">
 
-            {/* Imprimr os serviços criados */}
+            {/* Imprimr os serviços criados, usamos MAP pois é um array*/}
             <div className="services-list">
               {servicos.map((service) => (
                 <div
@@ -31,12 +47,12 @@ export default function AddServices() {
                   className="service-box"
                   onClick={() => handleServiceClick(service.id)}
                 >
-                  {service.name}
+                  {service.nome_servico}
                 </div>
               ))}
-               <button className='to_add_button' onClick={handleAddService}>Adicionar Serviço</button>
+              
             </div>
-            
+            <button className='to_add_button' onClick={handleAddService}>Adicionar Serviço</button>
           </div>
         )}
       </div>

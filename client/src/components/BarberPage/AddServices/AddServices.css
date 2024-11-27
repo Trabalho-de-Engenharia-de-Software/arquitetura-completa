@@ -40,13 +40,46 @@
     justify-content: center;
 }
 
+.services_list_container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.services-list{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.service-box{
+    width: 30%;
+    height: 10vh;
+    background-color: #ffffff;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Roboto;
+}
+
 .to_add_button{
-    width: 25%;
+    width: 30%;
     height: 10vh;
     background-color: #ffffff;
     cursor: pointer;
     border-radius: 15px;
     font-size: 3vh;
+    margin-top: 15vh;
 }
 
 .to_add_button:hover{
