@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import "./AddServices.css";
 import Swal from "sweetalert2";
 import AlertComponent from "./AlertComponent/AlertComponent";
+import { useNavigate } from "react-router";
 
 export default function AddServices() {
   const [servicos, setSevicos] = useState([]);
+  const navigate = useNavigate();
 
   //API
   const url = "http://localhost:3000/servicos"
@@ -19,11 +21,16 @@ export default function AddServices() {
     }
 
     fetchServicos()
+    
     console.log(servicos)
   }, [url])
   //Fim da API com o JSON Server
 
-  const handleAddService = () => {};
+ 
+//Comando para fazer o direcionamento para outra página
+  const handleAddService = () => {
+    navigate('/addservice')
+  };
 
   const handleServiceClick = () => {};
 
