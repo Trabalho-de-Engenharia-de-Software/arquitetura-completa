@@ -1,0 +1,26 @@
+.alert_component_to_add_button{
+    width: 50%;
+    height: 10vh;
+    background-color: #ffffff;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 3vh;
+    
+}
+
+.alert_component_to_add_button:hover{
+    transition: 0.5s;
+    background-color: #D4AF37;
+    color: black;
+}
+
+.Alert_Inform{
+    font-size: 10vh;
+    font-family: Jaini Purva;
+    color: #D4AF37;
+    text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000; /* Cor da borda */
+}

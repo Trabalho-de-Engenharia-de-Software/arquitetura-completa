@@ -19,3 +19,11 @@
     -1px  1px 0 #000,
      1px  1px 0 #000; /* Cor da borda */
 }
+
+.Alert_container{
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}

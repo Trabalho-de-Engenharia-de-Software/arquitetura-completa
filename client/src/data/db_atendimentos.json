@@ -1,0 +1,10 @@
+{
+    "servicos": [
+    {
+        "id": "1", 
+        "nome_servico": "Corte de Cabelo",
+        "valor": "35.00",
+        "observacao": ""
+    }
+    ]
+}
