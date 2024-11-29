@@ -1,9 +1,9 @@
-import FomrAddServices from '../components/AddServicesPage/FomrAddServices'
+import FomrAddServices from '../components/AddServicesPage/FormAddServices'
 import './CSS/AddServicePage.css'
 
 export default function AddServicePage() {
   return (
-    <div>
+    <div className='FormAddServices'>
         <FomrAddServices/>
     </div>
   )

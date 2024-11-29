@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './FormAddServices.css'
 
 export default function FormAddServices() {
   const [services, setServices] = useState([{ id: Date.now(), NOME: '', PRECO: '', DESCRICAO: '' }]);
@@ -36,7 +37,7 @@ export default function FormAddServices() {
   };
 
   return (
-    <div>
+    <div className='add_services_container'>
       <h1>Cadastro de Serviços</h1>
       <form onSubmit={handleSubmit}>
         {services.map((service, index) => (
