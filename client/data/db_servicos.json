@@ -1,0 +1,16 @@
+{
+  "servicos": [
+    {
+      "id": "1",
+      "nome_servico": "Corte de Cabelo",
+      "valor": "35.00",
+      "observacao": ""
+    },
+    {
+      "id": "2",
+      "nome_servico": "Barba",
+      "valor": "20.00",
+      "observacao": ""
+    }
+  ]
+}

@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
-import './FormAddServices.css'
+import React, { useState } from "react";
+import "./FormAddServices.css";
 
 export default function FormAddServices() {
-  const [services, setServices] = useState([{ id: Date.now(), NOME: '', PRECO: '', DESCRICAO: '' }]);
-  const url = 'http://localhost:3000/servicos';
+  const [services, setServices] = useState([
+    { id: Date.now(), NOME: "", PRECO: "", DESCRICAO: "" },
+  ]);
 
   const addServiceRow = () => {
-    setServices([...services, { id: Date.now(), NOME: '', PRECO: '', DESCRICAO: '' }]);
+    setServices([
+      ...services,
+      { id: Date.now(), NOME: "", PRECO: "", DESCRICAO: "" },
+    ]);
   };
-
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,9 +29,9 @@ export default function FormAddServices() {
 
       // API de envio de dados
       await fetch(url, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(serviceData),
       });
@@ -37,8 +39,19 @@ export default function FormAddServices() {
   };
 
   return (
-    <div className='add_services_container'>
-      <h1>Cadastro de Serviços</h1>
+    <div className="add_services_container_form">
+      <div className="title_add_service_container">
+        <div className="arrow_container_add_service">
+          <a href="/barberUser">
+            <img
+              src="./img/arrow_icon.png"
+              alt="Seta dourada com a ponta indicando para o lado esquerdo, com a funcionalidade de voltar a index"
+            />
+          </a>
+        </div>
+        <h1>Cadastro de Serviços</h1>
+      </div>
+
       <form onSubmit={handleSubmit}>
         {services.map((service, index) => (
           <div key={service.id} className="service-row">
@@ -65,8 +78,18 @@ export default function FormAddServices() {
             />
           </div>
         ))}
-        <button type="button" onClick={addServiceRow}>Adicionar Serviço</button>
-        <button type="submit">Enviar Dados</button>
+        <div className="button_addService_container">
+          <button
+            type="button"
+            onClick={addServiceRow}
+            className="Button_Add_Service"
+          >
+            Adicionar Serviço
+          </button>
+          <button type="submit" className="Button_Submit_Service">
+            Enviar Dados
+          </button>
+        </div>
       </form>
     </div>
   );

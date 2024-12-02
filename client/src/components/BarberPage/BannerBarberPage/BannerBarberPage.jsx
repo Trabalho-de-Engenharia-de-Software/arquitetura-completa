@@ -4,7 +4,7 @@ import ServiceBarber from './ServiceBarber/ServiceBarber'
 export default function BannerBarberPage() {
   return (
     <div className='Banner_container_user'>
-    <div>
+    <div className='agendamentos_container_banner'>
 
       <h1>Seus Atendimentos:</h1>
         <ServiceBarber/>

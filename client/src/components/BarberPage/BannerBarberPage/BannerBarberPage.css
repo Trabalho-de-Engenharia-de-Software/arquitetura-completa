@@ -23,3 +23,14 @@
     -1px  1px 0 #D4AF37,
      1px  1px 0 #D4AF37; /* Cor da borda */
 }
+
+.agendamentos_container_banner{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.agendamentos_container_banner h1{
+    margin: auto;
+}
