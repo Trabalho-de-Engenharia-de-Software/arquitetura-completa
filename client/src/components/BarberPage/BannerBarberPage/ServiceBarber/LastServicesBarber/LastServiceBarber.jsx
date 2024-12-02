@@ -27,8 +27,18 @@ export default function LastServiceBarber() {
     }
   return (
     <div className='data_container_agendamento'>
-            <p>Nome: {ultimoItem.nome_cliente}</p>
-            <p>Data: {ultimoItem.data}</p>
+        <div><h1>Cliente:</h1>
+        <p>{ultimoItem.nome_cliente}</p>
+        </div>
+        <div>
+        <h1>Horário</h1>
+        <p>{ultimoItem.data}</p>
+        </div>
+        <div>
+            <h1>Serviço:</h1>
+        
+        </div>
+           
             {/* Adicione mais campos conforme necessário */}
         </div>
   )
