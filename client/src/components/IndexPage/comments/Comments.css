@@ -42,5 +42,7 @@
 }
 
 .comment_text{
-    
+    max-width: 15vw;   
+    font-family: Roboto;
+    font-size: 4vh;
 }
