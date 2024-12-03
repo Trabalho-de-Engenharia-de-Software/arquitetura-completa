@@ -1,9 +1,14 @@
 import React from 'react'
 import './AlertComponent.css'
+import { useNavigate } from 'react-router-dom'
 
 export default function AlertComponent() {
 
-    const handleAddService = () => {};
+    const navigate = useNavigate()
+
+    const handleAddService = () => {
+      navigate('/addservice')
+    };
 
   return (
     <div className='Alert_container'>

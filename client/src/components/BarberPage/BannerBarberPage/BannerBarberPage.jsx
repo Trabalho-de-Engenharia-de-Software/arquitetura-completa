@@ -6,7 +6,7 @@ export default function BannerBarberPage() {
     <div className='Banner_container_user'>
     <div className='agendamentos_container_banner'>
 
-      <h1>Seus Atendimentos:</h1>
+      <h1>Seus Atendimentos para hoje:</h1>
         <ServiceBarber/>
     </div>
   </div>

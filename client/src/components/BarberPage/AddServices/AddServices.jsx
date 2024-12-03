@@ -8,7 +8,9 @@ export default function AddServices() {
   const [servicos, setSevicos] = useState([]);
   const navigate = useNavigate();
 
-  //API
+  //API AQUI
+
+  //API Exemplo
   const url = "http://localhost:3000/servicos"
 
 

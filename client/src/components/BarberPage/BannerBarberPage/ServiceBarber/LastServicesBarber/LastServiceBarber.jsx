@@ -6,6 +6,9 @@ export default function LastServiceBarber() {
     const url = "http://localhost:3000/atendimentos"
     const [ultimoItem, setUltimoItem] = useState(null);
 
+
+    //USAR API AQUI
+
     useEffect(() => {
         // Função para buscar o último item do banco de dados
         const fetchUltimoItem = async () => {
@@ -27,15 +30,16 @@ export default function LastServiceBarber() {
     }
   return (
     <div className='data_container_agendamento'>
-        <div className='table_container'><h1>Cliente:</h1>
+        <div className='table_container'><h3>Cliente:</h3>
         <p>{ultimoItem.nome_cliente}</p>
         </div>
         <div className='table_container'>
-        <h1>Horário</h1>
+        <h3>Horário</h3>
         <p>{ultimoItem.data}</p>
+        <p>19h00</p>
         </div>
         <div className='table_container'>
-        <h1>Serviço:</h1>
+        <h3>Serviço:</h3>
         <p>{ultimoItem.servicos}</p>
         </div>
            

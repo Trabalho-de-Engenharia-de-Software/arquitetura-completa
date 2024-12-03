@@ -1,9 +1,9 @@
 import React from 'react'
 import HeaderHomePageUser from '../components/HomePageUser/HeaderHomePageUser/HeaderHomePageUser'
 import BannerHomePageUser from '../components/HomePageUser/BannerHomePageUser/BannerHomePageUser'
-import Footer from '../components/IndexPage/Footer/Footer'
 import AtendimentosHomePage from '../components/HomePageUser/AtendimentosHomePage/AtendimentosHomePage'
 import ServicesHomePage from '../components/HomePageUser/ServicesHomePage/ServicesHomePage'
+import FooterUsers from '../components/FooterGeral/FooterUsers'
 
 export default function HomePageUser() {
   return (
@@ -12,7 +12,7 @@ export default function HomePageUser() {
       <BannerHomePageUser/>
       <AtendimentosHomePage/>
       <ServicesHomePage/>
-      <Footer/>
+      <FooterUsers/>
     </div>
   )
 }

@@ -6,6 +6,10 @@ export default function AgendamentosBarber() {
   const url = "http://localhost:3000/atendimentos";
   const [atendimentos, setAtendimentos] = useState([]);
 
+
+  //USAR API AQUI
+
+  //API AQUI
   //Primeira parte da API, usando o fetch diretamente no código
   useEffect(() => {
     const fetchAgendamentos = async () => {
