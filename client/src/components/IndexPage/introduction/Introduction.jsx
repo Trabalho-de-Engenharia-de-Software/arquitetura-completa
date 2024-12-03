@@ -3,10 +3,10 @@ import "./introduction.css";
 export default function Introduction() {
   return (
     <div className="introduction_container">
-      <div className="image_gustavo">Imagem do gustavo</div>
+      <div className="image_gustavo"><img src="./img/Logo.png" alt="Logo da barbearia" /></div>
       <div className="text_container">
         <p>
-          Barbeiro apaixonado por transformar o visual dos clientes. Desde 2019,
+          Sou um Barbeiro apaixonado por transformar o visual dos clientes. Desde 2019,
           meu objetivo é proporcionar um atendimento de qualidade em cada corte.
           Na minha barbearia, você encontrará um ambiente acolhedor e
           descontraído, ideal para relaxar enquanto cuida do seu estilo. Com uma

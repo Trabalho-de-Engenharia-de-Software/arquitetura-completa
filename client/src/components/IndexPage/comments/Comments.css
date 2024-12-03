@@ -30,13 +30,17 @@
 }
 
 .comment_container {
-    background-color: #d4d4d4;
+    background-color: white;
     border-radius: 15px;
     margin: auto;
     width: 25vw;
     height: 70vh;
     display: flex;
     align-items: center;
-    text-align: justify;
+    text-align: center;
     justify-content: center;
+}
+
+.comment_text{
+    
 }
