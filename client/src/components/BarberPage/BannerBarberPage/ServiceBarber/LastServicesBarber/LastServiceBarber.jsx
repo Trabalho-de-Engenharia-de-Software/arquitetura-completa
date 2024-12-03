@@ -36,7 +36,7 @@ export default function LastServiceBarber() {
         </div>
         <div className='table_container'>
         <h1>Serviço:</h1>
-        <p></p>
+        <p>{ultimoItem.servicos}</p>
         </div>
            
             {/* Adicione mais campos conforme necessário */}
