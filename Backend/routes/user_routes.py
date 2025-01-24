@@ -1,22 +1,16 @@
-from flask import Blueprint, jsonify, request
-from models.database import db, ContactMessage
+from flask import Blueprint
+from controllers.user_controller import UserController
 
-contact = Blueprint('contact', __name__)
+user_routes = Blueprint('user_routes', __name__)
 
-@contact.route('/contact', methods=['POST'])
-def send_message():
-    data = request.json
-    new_message = ContactMessage(name=data['name'], email=data['email'], message=data['message'])
-    db.session.add(new_message)
-    db.session.commit()
-    return jsonify({'message': 'Message sent successfully!'}), 201
+@user_routes.route('/login', methods=['POST'])
+def login():
+    return UserController.login()
 
-@contact.route('/contact', methods=['GET'])
-def get_messages():
-    messages = ContactMessage.query.all()
-    return jsonify([{
-        'id': message.id,
-        'name': message.name,
-        'email': message.email,
-        'message': message.message
-    } for message in messages])
+@user_routes.route('/register', methods=['POST'])
+def register():
+    return UserController.register()
+
+@user_routes.route('/barbers', methods=['GET'])
+def get_barbers():
+    return UserController.get_barbers()

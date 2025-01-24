@@ -1,30 +1,43 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_cors import CORS
-from models.database import db
-from routes.services import services
-from routes.team import team
-from routes.contact import contact
+from routes.user_routes import user_routes
+from routes.services_routes import service_routes
+from models.database import db  # Import the `db` object
 
+# Initialize the Flask app
 app = Flask(__name__)
-CORS(app)
+CORS(app)  # Enable CORS for all routes
 
-# Configuração do banco de dados
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///barbearia.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# Register routes
+app.register_blueprint(user_routes, url_prefix='/api')
+app.register_blueprint(service_routes, url_prefix='/api')
 
-# Inicialização do banco de dados
-db.init_app(app)
-
-# Registro das rotas
-app.register_blueprint(services)
-app.register_blueprint(team)
-app.register_blueprint(contact)
-
+# Test route to check if the app is running
 @app.route('/')
 def home():
-    return "Backend da Barbearia funcionando!"
+    return jsonify({"message": "Welcome to the Barber Shop API!"}) 
 
+# Test route to check the database connection
+@app.route('/test-db', methods=['GET'])
+def test_db():
+    try:
+        # Get a database connection
+        conn = db()
+        cursor = conn.cursor()
+
+        # Execute a simple query
+        cursor.execute('SELECT * FROM Cliente')
+        results = cursor.fetchall()
+
+        # Close the cursor and connection
+        cursor.close()
+        conn.close()
+
+        # Return the results as JSON
+        return jsonify({"message": "Database connection successful!", "data": results})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# Run the app
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()  # Cria as tabelas do banco, se ainda não existirem
     app.run(debug=True)

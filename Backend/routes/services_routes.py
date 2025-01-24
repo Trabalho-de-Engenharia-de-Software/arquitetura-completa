@@ -1,22 +1,12 @@
 from flask import Blueprint, jsonify, request
-from models.database import db, Service
+from controllers.service_controller import ServiceController
 
-services = Blueprint('services', __name__)
+service_routes = Blueprint('service_routes', __name__)
 
-@services.route('/services', methods=['GET'])
+@service_routes.route('/services', methods=['GET'])
 def get_services():
-    services = Service.query.all()
-    return jsonify([{
-        'id': service.id,
-        'name': service.name,
-        'description': service.description,
-        'price': service.price
-    } for service in services])
+    return ServiceController.get_services()
 
-@services.route('/services', methods=['POST'])
-def add_service():
-    data = request.json
-    new_service = Service(name=data['name'], description=data['description'], price=data['price'])
-    db.session.add(new_service)
-    db.session.commit()
-    return jsonify({'message': 'Service added successfully!'}), 201
+@service_routes.route('/services', methods=['POST'])
+def create_service():
+    return ServiceController.create_service()
