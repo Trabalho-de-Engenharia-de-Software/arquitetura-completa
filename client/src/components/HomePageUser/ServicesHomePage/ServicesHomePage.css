@@ -30,4 +30,26 @@
     background-color: #d4d4d48f;
     margin: 90px auto;
     border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border: #D4AF37 3px solid;
+ }
+
+ .container_services_homeUser h1{
+    font-family: Jaini Purva;
+    font-size: 10vh;
+    color: #D4AF37;
+    text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000; /* Cor da borda */
+ }
+
+ .Services_container_name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
  }
