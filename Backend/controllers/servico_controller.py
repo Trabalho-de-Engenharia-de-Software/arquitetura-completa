@@ -49,7 +49,7 @@ class ServicoController:
             return jsonify([{
                 "id": servico.id_servico,
                 "barber_id": servico.barber_id,
-                "nome": servico.nomo_servico,
+                "nome": servico.nome_servico,
                 "preco": servico.preco_servico
             } for servico in servicos]), 200
         except Exception as e:

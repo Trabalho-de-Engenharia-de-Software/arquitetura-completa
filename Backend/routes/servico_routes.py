@@ -11,14 +11,14 @@ def create_servico():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@servico_bp.route('/', methods=['GET'])
+@servico_bp.route('/consulta', methods=['GET'])
 def get_all_servicos():
     try:
         return ServicoController.get_all_servicos()
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@servico_bp.route('/<int:servico_id>', methods=['GET'])
+@servico_bp.route('/consulta/<int:servico_id>', methods=['GET'])
 def get_servico_by_id(servico_id):
     try:
         return ServicoController.get_servico_by_id(servico_id)

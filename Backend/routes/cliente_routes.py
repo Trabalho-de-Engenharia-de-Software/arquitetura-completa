@@ -4,7 +4,7 @@ from controllers.cliente_controller import ClientController
 # Remove the url_prefix here since it's already defined in routes/__init__.py
 cliente_bp = Blueprint('client', __name__)
 
-@cliente_bp.route('/register', methods=['POST'])
+@cliente_bp.route('/registro', methods=['POST'])
 def create_client():
     """
     Create a new cliente.

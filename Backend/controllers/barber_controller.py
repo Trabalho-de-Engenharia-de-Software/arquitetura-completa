@@ -33,8 +33,8 @@ class BarberController:
         barbers = BarberModel.query.all()
         return jsonify([{
             "id": barber.barber_id,
-            "name": barber.barber_nome,
-            "cellphone": barber.barber_telefone,
+            "nome": barber.barber_nome,
+            "telefone": barber.barber_telefone,
             "email": barber.barber_email,
             "senha": barber.barber_senha,
             "especialidade": barber.barber_especialidade
@@ -47,8 +47,8 @@ class BarberController:
         if barber:
             return jsonify({
                 "id": barber.barber_id,
-                "name": barber.barber_nome,
-                "cellphone": barber.barber_telefone,
+                "nome": barber.barber_nome,
+                "telefone": barber.barber_telefone,
                 "email": barber.barber_email,
                 "senha": barber.barber_senha,
                 "especialidade": barber.barber_especialidade
