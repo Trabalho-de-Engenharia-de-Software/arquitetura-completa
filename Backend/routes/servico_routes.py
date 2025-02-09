@@ -4,7 +4,7 @@ from controllers.servico_controller import ServicoController
 # Remove the url_prefix here since it's already defined in routes/__init__.py
 servico_bp = Blueprint('servico', __name__)
 
-@servico_bp.route('/', methods=['POST'])
+@servico_bp.route('/registro', methods=['POST'])
 def create_servico():
     try:
         return ServicoController.create_servico()

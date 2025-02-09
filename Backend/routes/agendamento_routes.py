@@ -3,7 +3,7 @@ from controllers.agendamento_controller import AgendamentoController
 
 agendamento_bp = Blueprint('agendamento', __name__)
 
-@agendamento_bp.route('/', methods=['POST'])
+@agendamento_bp.route('/agendar', methods=['POST'])
 def create_agendamento():
     try:
         return AgendamentoController.create_agendamento()
