@@ -7,27 +7,34 @@ class AgendamentoController:
     @staticmethod
     def create_agendamento():
         try:
+            # Obtendo os dados do corpo da requisição
             data = request.get_json()
-            client_id = data.get('client_id')
-            servico_id = data.get('servico_id')
+            cliente_id = data.get('cliente_id')
+            id_servico = data.get('id_servico')
             date_str = data.get('date')
             time_str = data.get('time')
 
-            if not client_id or not servico_id or not date_str or not time_str:
-                raise BadRequest("client_id, servico_id, date, and time are required.")
+            # Validação de campos obrigatórios
+            if not cliente_id or not id_servico or not date_str or not time_str:
+                raise BadRequest("cliente_id, id_servico, date, and time are required.")
 
             try:
-                date = datetime.fromisoformat(date_str)
-                time = datetime.strptime(time_str, '%H:%M:%S').time() 
-            except ValueError:
-                raise BadRequest("Invalid date or time format. Use ISO format for date and HH:MM:SS for time.")
+                # Convertendo a string de data e hora para o formato correto
+                date = datetime.fromisoformat(date_str)  # ISO format para a data
+                time = datetime.strptime(time_str, '%H:%M:%S').time()  # Horário no formato HH:MM:SS
+            except ValueError as e:
+                # Caso a conversão falhe, é possível identificar o erro de formatação
+                return jsonify({"error": "Invalid date or time format. Use ISO format for date and HH:MM:SS for time."}), 400
 
-            AgendamentoModel.create_agendamento(client_id, servico_id, date, time)
+            # Criando o agendamento
+            AgendamentoModel.create_agendamento(cliente_id, id_servico, date, time)
             return jsonify({"message": "Agendamento criado com sucesso"}), 201
         except BadRequest as e:
+            # Retorna erro 400 para requisições mal formuladas
             return jsonify({"error": str(e)}), 400
         except Exception as e:
-            return jsonify({"error": "Um erro inesperado ocorreu"}), 500
+            # Detalhando o erro inesperado para depuração
+            return jsonify({"error": f"Um erro inesperado ocorreu: {str(e)}"}), 500
 
     @staticmethod
     def get_all_agendamentos():

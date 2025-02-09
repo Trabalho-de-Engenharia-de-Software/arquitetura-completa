@@ -4,7 +4,7 @@ from controllers.cliente_controller import ClientController
 # Remove the url_prefix here since it's already defined in routes/__init__.py
 cliente_bp = Blueprint('client', __name__)
 
-@cliente_bp.route('/', methods=['POST'])
+@cliente_bp.route('/register', methods=['POST'])
 def create_client():
     """
     Create a new cliente.
@@ -14,7 +14,7 @@ def create_client():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@cliente_bp.route('/', methods=['GET'])
+@cliente_bp.route('/clientes', methods=['GET'])
 def get_all_clients():
     try:
         return ClientController.get_all_clients()

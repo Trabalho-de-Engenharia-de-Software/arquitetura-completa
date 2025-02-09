@@ -4,30 +4,30 @@ from extensions import db
 Base = declarative_base()
 
 class AgendamentoModel(db.Model):
-    __tablename__ = 'agendamentos'
+    __tablename__ = 'Agendamento'
     agendamento_id = db.Column(db.Integer, primary_key=True)
-    client_id = db.Column(db.Integer, db.ForeignKey('clients.client_id'))
-    servico_id = db.Column(db.Integer, db.ForeignKey('servicos.servico_id'))
+    cliente_id = db.Column(db.Integer, db.ForeignKey('Cliente.cliente_id'))
+    id_servico = db.Column(db.Integer, db.ForeignKey('Servico.id_servico'))
     date = db.Column(db.DateTime)
     time = db.Column(db.Time)
 
-    def __init__(self, client_id, servico_id, date, time):
-        self.client_id = client_id
-        self.servico_id = servico_id
+    def __init__(self, cliente_id, id_servico, date, time):
+        self.cliente_id = cliente_id
+        self.id_servico = id_servico
         self.date = date
         self.time = time
 
     def to_dict(self):
         return {
             'agendamento_id': self.agendamento_id,
-            'client_id': self.client_id,
-            'servico_id': self.servico_id,
+            'cliente_id': self.cliente_id,
+            'id_servico': self.id_servico,
             'date': self.date.isoformat(), 
         }
 
     @staticmethod
-    def create_agendamento(client_id, servico_id, date, time):
-        agendamento = AgendamentoModel(client_id, servico_id, date, time)
+    def create_agendamento(cliente_id, id_servico, date, time):
+        agendamento = AgendamentoModel(cliente_id, id_servico, date, time)
         db.session.add(agendamento)
         db.session.commit()
 

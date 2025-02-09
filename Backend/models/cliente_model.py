@@ -7,7 +7,7 @@ Base = declarative_base()
 
 class ClientModel(db.Model):
     __tablename__ = 'Cliente'
-    client_id = db.Column(db.Integer, primary_key=True)
+    cliente_id = db.Column(db.Integer, primary_key=True)
     cliente_nome = db.Column(db.String(60), nullable=False)
     cliente_email = db.Column(db.String(60), nullable=False, unique=True)
     cliente_telefone = db.Column(db.String(60), nullable=False)
@@ -21,7 +21,7 @@ class ClientModel(db.Model):
 
     def to_dict(self):
         return {
-            'client_id': self.client_id,
+            'cliente_id': self.cliente_id,
             'cliente_nome': self.cliente_nome,
             'cliente_email': self.cliente_email,
             'cliente_telefone': self.cliente_telefone
@@ -38,8 +38,8 @@ class ClientModel(db.Model):
         return ClientModel.query.all()
 
     @staticmethod
-    def get_client_by_id(client_id):
-        return ClientModel.query.get(client_id)
+    def get_client_by_id(cliente_id):
+        return ClientModel.query.get(cliente_id)
 
     @staticmethod
     def login_client(email, senha):

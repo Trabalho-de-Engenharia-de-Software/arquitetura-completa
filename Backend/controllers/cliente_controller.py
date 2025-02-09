@@ -6,7 +6,6 @@ import traceback  # Importa para capturar o traceback completo
 
 class ClientController:
 
-
     @staticmethod
     def create_client():
         try:

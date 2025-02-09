@@ -5,7 +5,7 @@ Base = declarative_base()
 
 class ServicoModel(db.Model):
     __tablename__ = 'Servico'
-    servico_id = db.Column(db.Integer, primary_key=True)
+    id_servico = db.Column(db.Integer, primary_key=True)
     barber_id = db.Column(db.Integer, db.ForeignKey('Barbeiro.barber_id'))
     nome_servico = db.Column(db.String)
     preco_servico = db.Column(db.Float)
@@ -17,7 +17,7 @@ class ServicoModel(db.Model):
 
     def to_dict(self):
         return {
-            'servico_id': self.servico_id,
+            'id_servico': self.id_servico,
             'barber_id': self.barber_id,
             'nome_servico': self.nome_servico,
             'preco_servico': self.preco_servico
@@ -34,5 +34,5 @@ class ServicoModel(db.Model):
         return ServicoModel.query.all()
 
     @staticmethod
-    def get_servico_by_id(servico_id):
-        return ServicoModel.query.get(servico_id)
+    def get_servico_by_id(id_servico):
+        return ServicoModel.query.get(id_servico)
