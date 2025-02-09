@@ -69,3 +69,10 @@ class AgendamentoModel(db.Model):
     @staticmethod
     def get_agendamento_by_id(agendamento_id):
         return AgendamentoModel.query.get(agendamento_id)
+
+    @staticmethod
+    def get_agendamentos_por_barbeiro(barber_id):
+        """Retorna todos os agendamentos associados a um barbeiro."""
+        return AgendamentoModel.query.join(ServicoModel).filter(
+            ServicoModel.barber_id == barber_id
+        ).all()

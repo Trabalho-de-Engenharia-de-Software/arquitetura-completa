@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify
+from models.agendamento_model import AgendamentoModel
 from controllers.agendamento_controller import AgendamentoController
 import traceback
 
@@ -21,6 +22,32 @@ def create_agendamento():
         error_traceback = traceback.format_exc()
         return jsonify({"error": str(e), "traceback": error_traceback}), 500
 
+@agendamento_bp.route('/cliente/<int:cliente_id>', methods=['GET'])
+def get_agendamentos_cliente(cliente_id):
+    try:
+        # Busca todos os agendamentos do cliente
+        agendamentos = AgendamentoModel.query.filter_by(cliente_id=cliente_id).all()
+        
+        # Converte os agendamentos para um formato JSON
+        agendamentos_json = [agendamento.to_dict() for agendamento in agendamentos]
+        
+        return jsonify(agendamentos_json), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@agendamento_bp.route('/barbeiro/<int:barber_id>', methods=['GET'])
+def get_agendamentos_barbeiro(barber_id):
+    try:
+        # Busca todos os agendamentos do barbeiro
+        agendamentos = AgendamentoModel.get_agendamentos_por_barbeiro(barber_id)
+        
+        # Converte os agendamentos para um formato JSON
+        agendamentos_json = [agendamento.to_dict() for agendamento in agendamentos]
+        
+        return jsonify(agendamentos_json), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
 @agendamento_bp.route('/disponiveis', methods=['GET'])
 def get_horarios_disponiveis():
     try:
