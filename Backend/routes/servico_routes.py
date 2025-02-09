@@ -5,22 +5,22 @@ from controllers.servico_controller import ServicoController
 servico_bp = Blueprint('servico', __name__)
 
 @servico_bp.route('/', methods=['POST'])
-def create_service():
+def create_servico():
     try:
-        return ServicoController.create_service()
+        return ServicoController.create_servico()
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 @servico_bp.route('/', methods=['GET'])
-def get_all_services():
+def get_all_servicos():
     try:
-        return ServicoController.get_all_services()
+        return ServicoController.get_all_servicos()
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@servico_bp.route('/<int:service_id>', methods=['GET'])
-def get_service_by_id(service_id):
+@servico_bp.route('/<int:servico_id>', methods=['GET'])
+def get_servico_by_id(servico_id):
     try:
-        return ServicoController.get_service_by_id(service_id)
+        return ServicoController.get_servico_by_id(servico_id)
     except Exception as e:
         return jsonify({"error": str(e)}), 500

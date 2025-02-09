@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify
 from controllers.agendamento_controller import AgendamentoController
 
-# Remove the url_prefix here since it's already defined in routes/__init__.py
 agendamento_bp = Blueprint('agendamento', __name__)
 
 @agendamento_bp.route('/', methods=['POST'])

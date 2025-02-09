@@ -2,59 +2,73 @@ from flask import jsonify, request
 from models.servico_model import ServicoModel
 from werkzeug.exceptions import BadRequest
 from extensions import db
+import logging
 
 class ServicoController:
     @staticmethod
-    def create_service():
+    def create_servico():
         try:
             data = request.get_json()
             barber_id = data.get('barber_id')
-            name = data.get('name')
-            price = data.get('price')
+            nome = data.get('nome')
+            preco = data.get('preco')
 
-            if not name or price is None:
-                raise BadRequest("Nome e preço necessários")
+            # Validação correta dos dados
+            if barber_id is None:
+                raise BadRequest("O campo 'barber_id' é obrigatório.")
+            if not nome:
+                raise BadRequest("O campo 'nome' é obrigatório.")
+            if preco is None:  # Permite preço 0.00, mas não None
+                raise BadRequest("O campo 'preco' é obrigatório.")
 
-            # Create a new service
-            new_service = ServicoModel(
-                nome_servico=name,
-                preco_servico=price
+            # Criar um novo serviço
+            new_servico = ServicoModel(
+                barber_id=barber_id,
+                nome_servico=nome,
+                preco_servico=preco
             )
 
-            # Add and commit the new service to the database
-            db.session.add(new_service)
+            # Salvar no banco
+            db.session.add(new_servico)
             db.session.commit()
 
             return jsonify({"message": "Serviço adicionado com sucesso"}), 201
+
         except BadRequest as e:
             return jsonify({"error": str(e)}), 400
+
         except Exception as e:
             db.session.rollback()
-            return jsonify({"error": "Um erro inesperado aconteceu"}), 500
+            logging.error(f"Erro ao adicionar serviço: {str(e)}")  # Log no terminal
+            return jsonify({"error": f"Erro inesperado: {str(e)}"}), 500  # Retorna erro real
 
     @staticmethod
-    def get_all_services():
+    def get_all_servicos():
         try:
-            services = ServicoModel.query.all()
+            servicos = ServicoModel.query.all()
             return jsonify([{
-                "id": service.id_servico,
-                "name": service.nome_servico,
-                "price": service.preco_servico
-            } for service in services]), 200
+                "id": servico.id_servico,
+                "barber_id": servico.barber_id,
+                "nome": servico.nomo_servico,
+                "preco": servico.preco_servico
+            } for servico in servicos]), 200
         except Exception as e:
-            return jsonify({"error": "Um erro inesperado aconteceu"}), 500
+            logging.error(f"Erro ao buscar serviços: {str(e)}")
+            return jsonify({"error": f"Erro inesperado: {str(e)}"}), 500
 
     @staticmethod
-    def get_service_by_id(service_id):
+    def get_servico_by_id(servico_id):
         try:
-            service = ServicoModel.query.get(service_id)
-            if service:
+            servico = ServicoModel.query.get(servico_id)
+            if servico:
                 return jsonify({
-                    "id": service.id_servico,
-                    "name": service.nome_servico,
-                    "price": service.preco_servico
+                    "id": servico.id_servico,
+                    "barber_id": servico.barber_id,
+                    "nome": servico.nome_servico,
+                    "preco": servico.preco_servico
                 }), 200
             else:
                 return jsonify({"message": "Serviço não encontrado"}), 404
         except Exception as e:
-            return jsonify({"error": "Um erro inesperado aconteceu"}), 500
+            logging.error(f"Erro ao buscar serviço ID {servico_id}: {str(e)}")
+            return jsonify({"error": f"Erro inesperado: {str(e)}"}), 500

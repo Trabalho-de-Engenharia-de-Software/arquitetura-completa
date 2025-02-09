@@ -6,9 +6,10 @@ class BarberController:
     @staticmethod
     def create_barber():
         data = request.get_json()
-        nome = data.get('name')
-        telefone = data.get('cellphone')
+        nome = data.get('nome')
+        telefone = data.get('telefone')
         email = data.get('email')
+        senha = data.get('senha')
         especialidade = data.get('especialidade')
 
         # Create a new barber using the BarberModel
@@ -16,6 +17,7 @@ class BarberController:
             barber_nome=nome,
             barber_telefone=telefone,
             barber_email=email,
+            barber_senha=senha,
             barber_especialidade=especialidade
         )
 
@@ -30,10 +32,11 @@ class BarberController:
         # Fetch all barbers from the database
         barbers = BarberModel.query.all()
         return jsonify([{
-            "id": barber.barb_id,
+            "id": barber.barber_id,
             "name": barber.barber_nome,
             "cellphone": barber.barber_telefone,
             "email": barber.barber_email,
+            "senha": barber.barber_senha,
             "especialidade": barber.barber_especialidade
         } for barber in barbers]), 200
 
@@ -43,10 +46,11 @@ class BarberController:
         barber = BarberModel.query.get(barber_id)
         if barber:
             return jsonify({
-                "id": barber.barb_id,
+                "id": barber.barber_id,
                 "name": barber.barber_nome,
                 "cellphone": barber.barber_telefone,
                 "email": barber.barber_email,
+                "senha": barber.barber_senha,
                 "especialidade": barber.barber_especialidade
             }), 200
         else:

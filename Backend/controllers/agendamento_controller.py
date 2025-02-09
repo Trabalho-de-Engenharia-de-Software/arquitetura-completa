@@ -9,12 +9,12 @@ class AgendamentoController:
         try:
             data = request.get_json()
             client_id = data.get('client_id')
-            service_id = data.get('service_id')
+            servico_id = data.get('servico_id')
             date_str = data.get('date')
             time_str = data.get('time')
 
-            if not client_id or not service_id or not date_str or not time_str:
-                raise BadRequest("client_id, service_id, date, and time are required.")
+            if not client_id or not servico_id or not date_str or not time_str:
+                raise BadRequest("client_id, servico_id, date, and time are required.")
 
             try:
                 date = datetime.fromisoformat(date_str)
@@ -22,7 +22,7 @@ class AgendamentoController:
             except ValueError:
                 raise BadRequest("Invalid date or time format. Use ISO format for date and HH:MM:SS for time.")
 
-            AgendamentoModel.create_agendamento(client_id, service_id, date, time)
+            AgendamentoModel.create_agendamento(client_id, servico_id, date, time)
             return jsonify({"message": "Agendamento criado com sucesso"}), 201
         except BadRequest as e:
             return jsonify({"error": str(e)}), 400
