@@ -134,3 +134,21 @@
      1px  1px 0 #D4AF37; /* Cor da borda */
     transition: 0.5s;
 }
+
+.date_lines_container{
+    background-color: #ffffff96;
+    border-radius: 15px;
+    padding: 5px 4px;
+    margin-bottom: 15px;
+}
+
+.date_container h2{
+    font-size: 30px;
+    text-align: center;
+}
+
+.date_container p{
+    font-family: Arial;
+    font-size: 20px;
+    margin-bottom: 5px;
+}

@@ -98,13 +98,15 @@ export default function FormSignIn() {
         </div>
       )}
       {etapa === 3 && (
-        <div className='Sign_In_Form_Container'>
+        <div className='date_container'>
+          <div className='date_lines_container'>
           <h2>Revisar Dados</h2>
           <p>Nome: {formData.nome}</p>
           <p>Sobrenome: {formData.sobrenome}</p>
           <p>E-mail: {formData.email}</p>
           <p>Telefone: {formData.telefone}</p>
           <p>Data de Nascimento: {formData.data_nascimento}</p>
+          </div>
           <div className='Sign_In_buttons_container'>
           <button onClick={handlePrev} className='Prev_button'>Anterior</button>
           <button onClick={handleSubmit} className="Next_button">Enviar</button>
