@@ -1,2 +1,5 @@
-# models/__init__.py
-from .database import db  # Exporta a função `db` para ser usada em outros módulos
+# from extensions import db
+from .barber_model import BarberModel
+from .servico_model import ServicoModel
+from .agendamento_model import AgendamentoModel
+from .cliente_model import ClientModel
