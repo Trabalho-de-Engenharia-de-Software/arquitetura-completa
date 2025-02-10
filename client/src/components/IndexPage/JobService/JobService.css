@@ -28,53 +28,73 @@
 }
 
 .angry-grid {
-    display: grid; 
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    margin-top: 30px;
-    gap: 15px;
-    height: 100vh;
-    width: 80%;
-    
- }
+   display: grid; 
+   margin-top: 15px;
+   grid-template-rows: 1fr 1fr 1fr 1fr;
+   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
    
- #item-0 {
+   gap: 10px;
+   height: 75%;
+   width: 90%;
+   
+}
+  
+#item-0 {
 
-    background-color: #EF56D7; 
-    grid-row-start: 1;
-    grid-column-start: 1;
- 
-    grid-row-end: 4;
-    grid-column-end: 4;
-    
- }
- #item-1 {
- 
-    background-color: #EBDA9A; 
-    grid-row-start: 1;
-    grid-column-start: 4;
- 
-    grid-row-end: 4;
-    grid-column-end: 6;
-    
- }
- #item-2 {
- 
-    background-color: #5B8A6F; 
-    grid-row-start: 4;
-    grid-column-start: 3;
- 
-    grid-row-end: 7;
-    grid-column-end: 6;
-    
- }
- #item-3 {
- 
-    background-color: #55BD89; 
-    grid-row-start: 4;
-    grid-column-start: 1;
- 
-    grid-row-end: 7;
-    grid-column-end: 3;
-    
- }
+   background-color: #7956DD; 
+   grid-row-start: 1;
+   grid-column-start: 1;
+   grid-row-end: 5;
+   grid-column-end: 4;
+   background-image: url(./fotos/corte1.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+#item-1 {
+
+   background-color: #CD5567; 
+   grid-row-start: 1;
+   grid-column-start: 4;
+   grid-row-end: 3;
+   grid-column-end: 6;
+   background-image: url(./fotos/corte4.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   object-fit: cover;
+}
+#item-2 {
+
+   background-color: #D68B88; 
+   grid-row-start: 3;
+   grid-column-start: 4;
+   background-image: url(./fotos/corte2.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   grid-row-end: 5;
+   grid-column-end: 6;
+   
+}
+#item-3 {
+
+   background-color: #BB9CAE; 
+   grid-row-start: 1;
+   grid-column-start: 6;
+   background-image: url(./fotos/corte3.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   grid-row-end: 3;
+   grid-column-end: 8;
+   
+}
+#item-4 {
+
+   background-color: #E7F7BA; 
+   grid-row-start: 3;
+   grid-column-start: 6;
+   background-image: url(./fotos/corte5.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   grid-row-end: 5;
+   grid-column-end: 8;
+   
+}

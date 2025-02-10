@@ -1,4 +1,4 @@
-import ReactVLibras from '@djpfs/react-vlibras';
+import VLibras from '@moreiraste/react-vlibras'
 import Header from '../components/IndexPage/header/header.jsx'
 import Banner from '../components/IndexPage/banner/Banner.jsx'
 import Introduction from '../components/IndexPage/introduction/Introduction.jsx'
@@ -21,7 +21,7 @@ function Index() {
       <Comments />
       <SocialMidia />
       <Footer />
-      <ReactVLibras forceOnload={true} />
+      <VLibras forceOnload={true}/>
     </>
   )
 }

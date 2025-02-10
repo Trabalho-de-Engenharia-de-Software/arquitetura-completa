@@ -11,15 +11,14 @@
 
 .comment{
     margin-top: 35px;
-    background-color: #d4d4d4;
+    background-color: #5e5d5d;
     width: 28vw;
     height: 100vh;
     border-radius: 15px;
 }
 
-.comment_photo{
-    background-color: white;
-    border: solid 1px black;
+.comment_photo1{
+    border: solid 1px #D4AF37;
     width: 150px;
     height: 150px;
     border-radius: 100px;
@@ -27,7 +26,41 @@
     z-index: 1;
     top: -75px; /* Ajuste conforme necessário */
     transform: translateY(-50%); /* Centraliza horizontalmente */
+    background-image: url(./fotos/comment_photo1.jfif);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+.comment_photo2{
+    background-color: white;
+    border: solid 1px #D4AF37;
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    margin: auto;
+    z-index: 1;
+    top: -75px; /* Ajuste conforme necessário */
+    transform: translateY(-50%); /* Centraliza horizontalmente */
+    background-image: url(./fotos/comment_photo2.jfif);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.comment_photo3{
+    background-color: white;
+    border: solid 1px #D4AF37;
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    margin: auto;
+    z-index: 1;
+    top: -75px; /* Ajuste conforme necessário */
+    transform: translateY(-50%); /* Centraliza horizontalmente */
+    background-image: url(./fotos/comment_photo3.jfif);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 
 .comment_container {
     background-color: white;
@@ -45,4 +78,9 @@
     max-width: 15vw;   
     font-family: Roboto;
     font-size: 4vh;
+}
+
+
+#comment_text{
+    width: 80%;
 }
