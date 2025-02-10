@@ -1,49 +1,52 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react';
-import './LastServiceBarber.css'
+import React, { useState, useEffect } from "react";
+import "./LastServiceBarber.css";
 
-export default function LastServiceBarber() {
-    const url = "http://localhost:3000/atendimentos"
-    const [ultimoItem, setUltimoItem] = useState(null);
+export default function LastServiceBarber({ agendamentos }) {
+  const [atendimentosHoje, setAtendimentosHoje] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  useEffect(() => {
+    const hoje = new Date().toISOString().split('T')[0]; // Data de hoje no formato YYYY-MM-DD
+    const atendimentosDoDia = agendamentos.filter(agendamento => agendamento.data === hoje);
+    setAtendimentosHoje(atendimentosDoDia);
+  }, [agendamentos]);
 
-    //USAR API AQUI
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % atendimentosHoje.length);
+  };
 
-    useEffect(() => {
-        // Função para buscar o último item do banco de dados
-        const fetchUltimoItem = async () => {
-            try {
-                const response = await fetch(url); // Substitua pela URL da sua API
-                const data = await response.json();
-                const ultimo = data[data.length - 1]; // Pega o último item da lista
-                setUltimoItem(ultimo);
-            } catch (error) {
-                console.error('Erro ao buscar o último item:', error);
-            }
-        };
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + atendimentosHoje.length) % atendimentosHoje.length);
+  };
 
-        fetchUltimoItem();
-    }, []);
+  if (atendimentosHoje.length === 0) {
+    return <div className="atendimentosHoje">
+        Sem agendamentos para hoje
+        </div>;
+  }
 
-    if (!ultimoItem) {
-        return <div>Carregando...</div>;
-    }
+  const ultimoItem = atendimentosHoje[currentIndex];
+
   return (
-    <div className='data_container_agendamento'>
-        <div className='table_container'><h3>Cliente:</h3>
+    <div className="data_container_agendamento">
+      <div className="table_container">
+        <h3>Cliente:</h3>
         <p>{ultimoItem.nome_cliente}</p>
-        </div>
-        <div className='table_container'>
+      </div>
+      <div className="table_container">
         <h3>Horário</h3>
         <p>{ultimoItem.data}</p>
-        <p>19h00</p>
-        </div>
-        <div className='table_container'>
+        <p>{ultimoItem.horario}</p>
+      </div>
+      <div className="table_container">
         <h3>Serviço:</h3>
         <p>{ultimoItem.servicos}</p>
-        </div>
-           
-            {/* Adicione mais campos conforme necessário */}
-        </div>
-  )
+      </div>
+
+      <div className="navigation_buttons">
+        <button onClick={handlePrev} disabled={atendimentosHoje.length <= 1}>Anterior</button>
+        <button onClick={handleNext} disabled={atendimentosHoje.length <= 1}>Próximo</button>
+      </div>
+    </div>
+  );
 }

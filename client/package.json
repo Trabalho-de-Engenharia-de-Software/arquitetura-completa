@@ -13,6 +13,7 @@
   "dependencies": {
     "@djpfs/react-vlibras": "^2.0.2",
     "@react-google-maps/api": "^2.20.3",
+    "axios": "^1.7.9",
     "install": "^0.13.0",
     "json-server": "^1.0.0-beta.3",
     "leaflet": "^1.9.4",

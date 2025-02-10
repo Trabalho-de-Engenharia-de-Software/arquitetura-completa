@@ -1,28 +1,22 @@
 import React, { useState, useEffect } from "react";
 import AgendamentoBox from "./AgendamentoBox/AgendamentoBox";
 import "./AgendamentosBarber.css";
+import { fetchAgendamentos, createAgendamento } from "../../../APIs/fetchAgendamentos";
 
 export default function AgendamentosBarber() {
-  const url = "http://localhost:3000/atendimentos";
   const [atendimentos, setAtendimentos] = useState([]);
 
-
-  //USAR API AQUI
-
-  //API AQUI
-  //Primeira parte da API, usando o fetch diretamente no código
   useEffect(() => {
-    const fetchAgendamentos = async () => {
-      const res = await fetch(url);
-      const data = await res.json();
+    const getAgendamentos = async () => {
+      const data = await fetchAgendamentos()
       setAtendimentos(data);
     };
 
-    fetchAgendamentos();
+    getAgendamentos();
 
     console.log(atendimentos);
-  }, [url]);
-  //Fim da API com o JSON Server
+  }, []);
+
 
   return (
     <div className="All_Agendamentos_Container">
@@ -43,7 +37,7 @@ export default function AgendamentosBarber() {
             {/* Imprimr os serviços criados, usamos MAP pois é um array*/}
 
             {atendimentos.map((atendimento) => (
-              <AgendamentoBox atendimentos={atendimento} key={atendimento.id} />
+              <AgendamentoBox atendimentos={atendimento} key={atendimento.AGENDAMENTO_ID} />
             ))}
           </div>
         )}

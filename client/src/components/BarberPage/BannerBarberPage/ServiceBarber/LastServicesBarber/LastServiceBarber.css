@@ -29,3 +29,11 @@
     font-size: 4vh;
     font-family: Roboto;
 }
+
+.atendimentosHoje{
+    font-size: 7vh;
+    color: white;
+    font-family: Roboto;
+    margin: auto;
+    text-align: center;
+}
