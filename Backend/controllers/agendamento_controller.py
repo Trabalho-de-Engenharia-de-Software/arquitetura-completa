@@ -38,7 +38,7 @@ class AgendamentoController:
             return jsonify([agendamento.to_dict() for agendamento in agendamentos]), 200
         except Exception as e:
             return jsonify({"error": "Um erro inesperado ocorreu", "message": str(e)}), 500
-
+    
     @staticmethod
     def get_agendamento_by_id(agendamento_id):
         try:
