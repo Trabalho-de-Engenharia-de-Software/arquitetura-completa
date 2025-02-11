@@ -3,29 +3,25 @@ import "./AddServices.css";
 import Swal from "sweetalert2";
 import AlertComponent from "./AlertComponent/AlertComponent";
 import { useNavigate } from "react-router";
+import {fetchServicos} from '../../../APIs/fetchServicos'
 
 export default function AddServices() {
   const [servicos, setSevicos] = useState([]);
   const navigate = useNavigate();
 
-  //API AQUI
-
-  //API Exemplo
-  const url = "http://localhost:3000/servicos"
 
 
   //Primeira parte da API, usando o fetch diretamente no código
   useEffect (() => {
-    const fetchServicos = async () => {
-      const res = await fetch(url);
-      const data = await res.json();
+    const getServicos = async () => {
+      const data = await fetchServicos();
       setSevicos(data)
     }
 
-    fetchServicos()
+    getServicos()
     
     console.log(servicos)
-  }, [url])
+  }, [])
   //Fim da API com o JSON Server
 
  
@@ -54,9 +50,9 @@ export default function AddServices() {
                 <div
                   key={service.id}
                   className="service-box"
-                  onClick={() => handleServiceClick(service.id)}
+                  onClick={() => handleServiceClick(service.id_servico)}
                 >
-                  {service.nome_servico}
+                  {service.nome}
                 </div>
               ))}
               

@@ -1,4 +1,4 @@
-import api from './AxiosPath'
+import api from './AxiosPath';
 
 // Função para buscar todos os serviços
 export async function fetchServicos() {
@@ -11,6 +11,17 @@ export async function fetchServicos() {
         return [];
     }
 }
+
+export const fetchServicosById = async (idServico) => {
+    try {
+        const path = `/servico/consulta/${idServico}`;
+        const response = await api.get(path);
+        console.log("Dados do serviço:", response.data); // Verifique a estrutura dos dados aqui
+        return response.data;
+    } catch (error) {
+        console.error('Erro ao buscar serviço:', error);
+    }
+};
 
 // Função para criar um novo serviço
 export async function createServico(servico) {
