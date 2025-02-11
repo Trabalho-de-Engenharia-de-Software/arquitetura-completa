@@ -1,19 +1,24 @@
 import React, { useState } from "react";
+import { createServico } from '../../APIs/fetchServicos'; // Importe a função de criação de serviço
 import "./FormAddServices.css";
 
 export default function FormAddServices() {
   const [services, setServices] = useState([
-    { id: Date.now(), NOME: "", PRECO: "", DESCRICAO: "" },
+    { id: Date.now(), NOME: "", PRECO: "" },
   ]);
-
-
-  //API AQUI
 
   const addServiceRow = () => {
     setServices([
       ...services,
-      { id: Date.now(), NOME: "", PRECO: "", DESCRICAO: "" },
+      { id: Date.now(), NOME: "", PRECO: "" },
     ]);
+  };
+
+  const handleChange = (index, e) => {
+    const { name, value } = e.target;
+    const newServices = [...services];
+    newServices[index][name] = value;
+    setServices(newServices);
   };
 
   const handleSubmit = async (e) => {
@@ -24,20 +29,13 @@ export default function FormAddServices() {
     // Enviar todos os serviços
     for (const service of services) {
       const serviceData = {
-        id: service.id,
-        nome_servico: service.NOME,
-        valor: service.PRECO,
-        observacao: service.DESCRICAO,
+        barber_id: 1, // Use o barber_id fixo como 1
+        nome: service.NOME, // Corrigir o nome do campo para "nome"
+        preco: parseFloat(service.PRECO), // Corrigir o nome do campo para "preco" e converter para float
       };
 
       // API de envio de dados
-      await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(serviceData),
-      });
+      await createServico(serviceData);
     }
   };
 
@@ -45,9 +43,9 @@ export default function FormAddServices() {
     <div className="add_services_container_form">
       <div className="title_add_service_container">
         <div className="arrow_container_add_service">
-          <a href="/barberUser">
+          <a href={`/barberUser/1`}>
             <img
-              src="./img/arrow_icon.png"
+              src="/img/arrow_icon.png"
               alt="Seta dourada com a ponta indicando para o lado esquerdo, com a funcionalidade de voltar a index"
             />
           </a>
@@ -63,20 +61,13 @@ export default function FormAddServices() {
               name="NOME"
               placeholder="Nome"
               value={service.NOME}
-              onChange={service.NOME}
+              onChange={(e) => handleChange(index, e)}
             />
             <input
               type="number"
               name="PRECO"
               placeholder="Preço"
               value={service.PRECO}
-              onChange={(e) => handleChange(index, e)}
-            />
-            <input
-              type="text"
-              name="DESCRICAO"
-              placeholder="Descrição/Observação"
-              value={service.DESCRICAO}
               onChange={(e) => handleChange(index, e)}
             />
           </div>

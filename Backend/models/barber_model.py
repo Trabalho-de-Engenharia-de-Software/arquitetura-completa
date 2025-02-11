@@ -43,3 +43,7 @@ class BarberModel(db.Model):
     @staticmethod
     def get_barber_by_id(barber_id):
         return BarberModel.query.get(barber_id)
+    
+    @staticmethod
+    def login_barber(email, senha):
+        return BarberModel.query.filter_by(barber_email=email, barber_senha=senha).first()

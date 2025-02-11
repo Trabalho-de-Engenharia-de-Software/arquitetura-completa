@@ -15,8 +15,8 @@ export default function App() {
       <Route path="/login" element={<LoginPage />} exact/>
       <Route path='/signin' element={<SignInPage/>} exact/>
       <Route path='/homeUser' element={<HomePageUser/>} exact/>
-      <Route path='/barberUser' element={<HomePageBarberUser/>} exact/>
-      <Route path='/addservice' element={<AddServicePage/>} exact/>
+      <Route path='/barberUser/:barberId' element={<HomePageBarberUser/>} exact/>
+      <Route path='/addservice/:barberId' element={<AddServicePage/>} exact/>
     </Routes>
   </BrowserRouter>
   )

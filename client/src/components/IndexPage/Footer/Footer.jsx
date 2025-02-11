@@ -15,20 +15,20 @@ export default function Footer() {
             <div></div>
             <div className="container_footer">
               <div className="Logo_footer">
-                 <img src="./img/Logo.png" alt="" />
+                 <img src="/img/Logo.png" alt="" />
               </div>
 
               <div className="midia_container">
-                <a href=""><img src="./img/whatsapp.png" alt="Logo do Aplicativo WhatsApp" /></a>
-                <a href=""><img src="./img/instagram.png" alt="Logo do Aplicativo Instagram" /></a>
-                <a href=""><img src="./img/mail.png" alt="" /></a>
+                <a href=""><img src="/img/whatsapp.png" alt="Logo do Aplicativo WhatsApp" /></a>
+                <a href=""><img src="/img/instagram.png" alt="Logo do Aplicativo Instagram" /></a>
+                <a href=""><img src="/img/mail.png" alt="" /></a>
               </div>
             </div>
         </div>
         <div className="copyright_container">
-            <img src="./img/GoldLine.png" alt="" />
+            <img src="/img/GoldLine.png" alt="" />
             <h2>© IFormais 2024 | All Right Reserved</h2>
-            <img src="./img/GoldLine.png" alt="" />
+            <img src="/img/GoldLine.png" alt="" />
         </div>
     </div>
   )

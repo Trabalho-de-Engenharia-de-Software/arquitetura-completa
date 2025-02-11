@@ -23,7 +23,7 @@ export const fetchServicosById = async (idServico) => {
     }
 };
 
-// Função para criar um novo serviço
+
 export async function createServico(servico) {
     try {
         const path = `/servico/registro`;

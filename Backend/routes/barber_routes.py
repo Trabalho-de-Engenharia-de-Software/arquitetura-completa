@@ -33,3 +33,14 @@ def get_barber_by_id(barber_id):
         return BarberController.get_barber_by_id(barber_id)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+# Rota de login
+@barber_bp.route('/login', methods=['POST'])
+def login_barber():
+    """
+    Login a barber.
+    """
+    try:
+        return BarberController.login_barber()
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500

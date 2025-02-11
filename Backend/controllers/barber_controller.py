@@ -55,3 +55,18 @@ class BarberController:
             }), 200
         else:
             return jsonify({"message": "Barber nao encontrado"}), 404
+        
+    # Adicionando o Controller de login
+    @staticmethod
+    def login_barber():
+        data = request.get_json()
+        email = data.get('email')
+        senha = data.get('senha')
+
+        # Fetch the barber by email and senha
+        barber = BarberModel.login_barber(email, senha)
+
+        if barber:
+            return jsonify({"message": "Login bem-sucedido", "barber_id": barber.barber_id}), 200
+        else:
+            return jsonify({"message": "Email ou senha incorretos"}), 401
