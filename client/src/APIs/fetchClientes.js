@@ -1,6 +1,6 @@
 import api from './AxiosPath'
 
-export async function fetchServicos() {
+export async function getClient() {
     try {
         const path = `/clientes`;
         const response = await api.get(path);
@@ -19,6 +19,17 @@ export async function fetchCliente(clientId) {
         return response.data;
     } catch (error) {
         console.error('Erro ao buscar cliente:', error);
+        return null;
+    }
+}
+
+export async function createClient(clientData) {
+    try {
+        const path = `/cliente/registro`;
+        const response = await api.post(path, clientData);
+        return response.data;
+    } catch (error) {
+        console.error('Erro ao criar cliente:', error);
         return null;
     }
 }

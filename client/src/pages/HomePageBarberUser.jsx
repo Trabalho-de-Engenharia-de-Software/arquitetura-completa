@@ -4,6 +4,7 @@ import BannerBarberPage from '../components/BarberPage/BannerBarberPage/BannerBa
 import FooterUsers from '../components/FooterGeral/FooterUsers'
 import HeaderHomePageUser from '../components/HomePageUser/HeaderHomePageUser/HeaderHomePageUser'
 import ReactVLibras from 'react-vlibras-plugin';
+import ServicesHomePage from '../components/HomePageUser/ServicesHomePage/ServicesHomePage'
 
 export default function HomePageBarberUser() {
   return (
@@ -11,6 +12,7 @@ export default function HomePageBarberUser() {
         <HeaderHomePageUser/>
         <BannerBarberPage/>
         <AddServices/>
+        <ServicesHomePage/>
         <AgendamentosBarber/>
         <FooterUsers/>
         <ReactVLibras/>

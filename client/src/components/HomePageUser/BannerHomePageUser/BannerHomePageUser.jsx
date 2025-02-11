@@ -6,7 +6,7 @@ export default function BannerHomePageUser() {
     <div className='Banner_container_user'>
       <div>
 
-        <h1>Seus Agendamentos:</h1>
+        <h1>Seu ultimo Agendamento:</h1>
             <Scheduling/>
       </div>
     </div>

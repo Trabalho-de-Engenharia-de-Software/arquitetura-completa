@@ -1,6 +1,7 @@
 import './FormSignIn.css';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { createClient } from '../../../APIs/fetchClientes';
 
 export default function FormSignIn() {
   const location = useLocation();
@@ -13,6 +14,7 @@ export default function FormSignIn() {
     email: email || '',
     telefone: '',
     data_nascimento: '',
+    senha: '', // Adicionando campo de senha
   });
 
   useEffect(() => {
@@ -32,8 +34,20 @@ export default function FormSignIn() {
     });
   };
 
-  const handleSubmit = () => {
-    alert('Inscrição completa!');
+  const handleSubmit = async () => {
+    const clientData = {
+      nome: formData.nome,
+      email: formData.email,
+      telefone: formData.telefone,
+      senha: formData.senha, // Incluindo senha no envio
+    };
+
+    const response = await createClient(clientData);
+    if (response) {
+      alert('Inscrição completa!');
+    } else {
+      alert('Erro ao criar cliente.');
+    }
   };
 
   const handleNext = () => {
@@ -70,13 +84,13 @@ export default function FormSignIn() {
             value={formData.email}
             onChange={handleChange}
           />
-           <div className='Sign_In_buttons_container'>
-          <button onClick={handleNext} className="Next_button">Próximo</button>
+          <div className='Sign_In_buttons_container'>
+            <button onClick={handleNext} className="Next_button">Próximo</button>
           </div>
         </div>
       )}
       {etapa === 2 && (
-         <div className='Sign_In_Form_Container'>
+        <div className='Sign_In_Form_Container'>
           <input
             type="text"
             name="telefone"
@@ -91,29 +105,36 @@ export default function FormSignIn() {
             value={formData.data_nascimento}
             onChange={handleChange}
           />
+          <input
+            type="password"
+            name="senha"
+            placeholder="Senha"
+            value={formData.senha}
+            onChange={handleChange}
+          />
           <div className='Sign_In_buttons_container'>
-          <button onClick={handlePrev} className='Prev_button'>Anterior</button>
-          <button onClick={handleNext} className="Next_button">Próximo</button>
+            <button onClick={handlePrev} className='Prev_button'>Anterior</button>
+            <button onClick={handleNext} className="Next_button">Próximo</button>
           </div>
         </div>
       )}
       {etapa === 3 && (
         <div className='date_container'>
           <div className='date_lines_container'>
-          <h2>Revisar Dados</h2>
-          <p>Nome: {formData.nome}</p>
-          <p>Sobrenome: {formData.sobrenome}</p>
-          <p>E-mail: {formData.email}</p>
-          <p>Telefone: {formData.telefone}</p>
-          <p>Data de Nascimento: {formData.data_nascimento}</p>
+            <h2>Revisar Dados</h2>
+            <p>Nome: {formData.nome}</p>
+            <p>Sobrenome: {formData.sobrenome}</p>
+            <p>E-mail: {formData.email}</p>
+            <p>Telefone: {formData.telefone}</p>
+            <p>Data de Nascimento: {formData.data_nascimento}</p>
           </div>
           <div className='Sign_In_buttons_container'>
-          <button onClick={handlePrev} className='Prev_button'>Anterior</button>
-          <button onClick={handleSubmit} className="Next_button">Enviar</button>
+            <button onClick={handlePrev} className='Prev_button'>Anterior</button>
+            <button onClick={handleSubmit} className="Next_button">Enviar</button>
           </div>
         </div>
       )}
-       <p className='Option2Login'>Já tem Cadastro? <a href="/Login">Entre</a></p>
+      <p className='Option2Login'>Já tem Cadastro? <a href="/Login">Entre</a></p>
     </div>
   );
 }
