@@ -8,7 +8,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch('/api/cliente/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

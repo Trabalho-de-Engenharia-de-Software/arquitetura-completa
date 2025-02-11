@@ -1,4 +1,4 @@
-import Header from '../components/IndexPage/header/header.jsx'
+import Header from '../components/IndexPage/header/Header.jsx'
 import Banner from '../components/IndexPage/banner/Banner.jsx'
 import Introduction from '../components/IndexPage/introduction/Introduction.jsx'
 import Address from '../components/IndexPage/Address/Address.jsx'
