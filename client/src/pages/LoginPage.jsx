@@ -3,22 +3,24 @@ import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../APIs/fetchLoginUser'; // Importe a função de login
 import "./CSS/LoginPage.css";
 import ReactVLibras from 'react-vlibras-plugin';
+import { useAuth } from '../Auth/AuthContext'; // Importe o contexto de autenticação
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [userType, setUserType] = useState('cliente'); // Estado para armazenar o tipo de usuário
     const navigate = useNavigate();
+    const { login } = useAuth(); // Utilize o contexto de autenticação
 
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
             const data = await loginUser(email, senha, userType);
             if (userType === 'cliente' && data.client_id) {
-                // Redirecionar para a página HomePageUser
+                login({ id: data.client_id, type: 'cliente' }); // Armazena os dados do cliente no contexto
                 navigate('/homeUser');
             } else if (userType === 'barber' && data.barber_id) {
-                // Redirecionar para a página HomePageBarber
+                login({ id: data.barber_id, type: 'barber' }); // Armazena os dados do barbeiro no contexto
                 navigate(`/barberUser/${data.barber_id}`);
             } else {
                 alert('Login ou senha inválidos');

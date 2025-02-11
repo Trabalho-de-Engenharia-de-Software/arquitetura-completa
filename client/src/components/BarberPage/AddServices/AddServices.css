@@ -70,6 +70,7 @@
     align-items: center;
     justify-content: center;
     font-family: Roboto;
+    margin-top: 15px;
 }
 
 .to_add_button{
