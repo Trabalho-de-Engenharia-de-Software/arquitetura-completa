@@ -12,6 +12,29 @@ export async function fetchAgendamentos() {
     }
 }
 
+// Função para buscar dias disponíveis
+export async function fetchDiasDisponiveis(barberId) {
+    try {
+        const path = `/agendamento/disponiveis?barber_id=${barberId}`;
+        const response = await api.get(path);
+        return response.data;
+    } catch (error) {
+        console.error('Erro ao buscar dias disponíveis:', error);
+        return [];
+    }
+}
+
+export async function fetchHorariosDisponiveis(barberId, date) {
+    try {
+        const path = `/agendamento/disponiveis?barber_id=${barberId}&date=${date}`;
+        const response = await api.get(path);
+        return response.data;
+    } catch (error) {
+        console.error('Erro ao buscar horários disponíveis:', error);
+        return [];
+    }
+}
+
 // Função para criar um novo agendamento
 export async function createAgendamento(agendamento) {
     try {

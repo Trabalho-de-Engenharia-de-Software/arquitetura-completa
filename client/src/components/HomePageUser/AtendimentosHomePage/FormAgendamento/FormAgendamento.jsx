@@ -1,6 +1,8 @@
 import './FormAgendamento.css';
-import { useState } from 'react';
-import Swal from 'sweetalert2'
+import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
+import { fetchDiasDisponiveis, fetchHorariosDisponiveis, createAgendamento } from '../../../../APIs/fetchAgendamentos';
+import {fetchServicos} from '../../../../APIs/fetchServicos'
 
 export default function FormAgendamento() {
   const [dataForm, setDataForm] = useState({
@@ -9,29 +11,48 @@ export default function FormAgendamento() {
     SERVICOS: []
   });
 
-  const [servicos, setServicos] = useState([{ id: 1, value: '' }]);
+  const [servicos, setServicos] = useState([]);
+  const [diasDisponiveis, setDiasDisponiveis] = useState([]);
+  const [horariosDisponiveis, setHorariosDisponiveis] = useState([]);
+  const [barberId, setBarberId] = useState(1); // Defina o ID do barbeiro conforme necessário
+
+  useEffect(() => {
+    // Buscar serviços ao carregar o componente
+    fetchServicos().then(setServicos);
+
+    // Buscar dias disponíveis ao carregar o componente
+    fetchDiasDisponiveis(barberId).then(setDiasDisponiveis);
+  }, [barberId]);
+
+  useEffect(() => {
+    // Buscar horários disponíveis quando a data for selecionada
+    if (dataForm.DATA) {
+      fetchHorariosDisponiveis(barberId, dataForm.DATA).then(setHorariosDisponiveis);
+    }
+  }, [dataForm.DATA, barberId]);
 
   const handleServicoChange = (id, value) => {
-    const novosServicos = servicos.map(servico => 
-      servico.id === id ? { ...servico, value } : servico
+    const novosServicos = dataForm.SERVICOS.map((servico, index) => 
+      index === id ? value : servico
     );
-    setServicos(novosServicos);
     setDataForm({
       ...dataForm,
-      SERVICOS: novosServicos.map(servico => servico.value)
+      SERVICOS: novosServicos
     });
   };
 
   const adicionarServico = () => {
-    setServicos([...servicos, { id: servicos.length + 1, value: '' }]);
+    setDataForm({
+      ...dataForm,
+      SERVICOS: [...dataForm.SERVICOS, '']
+    });
   };
 
   const removerServico = (id) => {
-    const novosServicos = servicos.filter(servico => servico.id !== id);
-    setServicos(novosServicos);
+    const novosServicos = dataForm.SERVICOS.filter((_, index) => index !== id);
     setDataForm({
       ...dataForm,
-      SERVICOS: novosServicos.map(servico => servico.value)
+      SERVICOS: novosServicos
     });
   };
 
@@ -45,33 +66,39 @@ export default function FormAgendamento() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Swal.fire(
-      {
-        title: 'Atenção',
-        text: 'Deseja fazer o agendamento?',
-        icon: 'question',
-        showCancelButton: true,
-        cancelButtonText: 'Cancelar Agendamento',
-        showConfirmButton: true,
-        confirmButtonText: 'Confirmar agendamento'
-      }).then((result) => {
-        if(result.isConfirmed) {
-          console.log(dataForm);
-          Swal.fire({
-            title: 'Agendamento Confirmado',
-            text: 'Agendamento marcado com sucesso',
-            icon: 'success'
-          })
-        } else {
-          Swal.fire({
-            title: 'Agendamento Excluido',
-            text: 'Agendamento Canelado com sucesso!',
-            icon: 'success'
-          })
-        }
-      })
-    
-    
+    Swal.fire({
+      title: 'Atenção',
+      text: 'Deseja fazer o agendamento?',
+      icon: 'question',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar Agendamento',
+      showConfirmButton: true,
+      confirmButtonText: 'Confirmar agendamento'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        createAgendamento(dataForm).then(response => {
+          if (response) {
+            Swal.fire({
+              title: 'Agendamento Confirmado',
+              text: 'Agendamento marcado com sucesso',
+              icon: 'success'
+            });
+          } else {
+            Swal.fire({
+              title: 'Erro',
+              text: 'Erro ao marcar agendamento',
+              icon: 'error'
+            });
+          }
+        });
+      } else {
+        Swal.fire({
+          title: 'Agendamento Excluido',
+          text: 'Agendamento Cancelado com sucesso!',
+          icon: 'success'
+        });
+      }
+    });
   };
 
   return (
@@ -88,34 +115,59 @@ export default function FormAgendamento() {
       <div className='data_form_container'>
         <div className='Label_container'>
           <label className='text_data'>Escolha uma data:</label>
-          <input type="date" className='input_choice' name="DATA" value={dataForm.DATA} onChange={handleChange} />
+          <input 
+            type="date" 
+            className='input_choice' 
+            name="DATA" 
+            value={dataForm.DATA} 
+            onChange={handleChange} 
+            min={diasDisponiveis.length > 0 ? diasDisponiveis[0] : ''}
+            max={diasDisponiveis.length > 0 ? diasDisponiveis[diasDisponiveis.length - 1] : ''}
+            list="dias-disponiveis"
+          />
+          <datalist id="dias-disponiveis">
+            {diasDisponiveis.map(dia => (
+              <option key={dia} value={dia} />
+            ))}
+          </datalist>
         </div>
 
         <div className='Label_container'>
           <label className='text_data'>Escolha um horário:</label>
-          <input type="time" className='input_choice' name="HORA" value={dataForm.HORA} onChange={handleChange} />
+          <input 
+            type="time" 
+            className='input_choice' 
+            name="HORA" 
+            value={dataForm.HORA} 
+            onChange={handleChange} 
+            list="horarios-disponiveis"
+          />
+          <datalist id="horarios-disponiveis">
+            {horariosDisponiveis.map(hora => (
+              <option key={hora} value={hora} />
+            ))}
+          </datalist>
         </div>
 
-        {servicos.map((servico) => (
-          <div key={servico.id} className='Label_container_choice'>
+        {dataForm.SERVICOS.map((servico, index) => (
+          <div key={index} className='Label_container_choice'>
             <label className='text_data'>Escolha um serviço:</label>
             <select
               className='select_choice'
-              value={servico.value}
-              onChange={(e) => handleServicoChange(servico.id, e.target.value)}
+              value={servico}
+              onChange={(e) => handleServicoChange(index, e.target.value)}
             >
-              <option value="none">Escolha uma opção</option>
-              <option value="Corte de Cabelo">Corte de Cabelo</option>
-              <option value="Barba">Barba</option>
-              <option value="Luzes">Luzes</option>
+              <option value="">Escolha uma opção</option>
+              {servicos.map(servico => (
+                <option key={servico.id} value={servico.nome}>{servico.nome}</option>
+              ))}
             </select>
-            {servicos.length > 1 &&  <button type="button" className='remove_button_service' onClick={() => removerServico(servico.id)}>Remover</button>}
-           
+            {dataForm.SERVICOS.length > 1 && <button type="button" className='remove_button_service' onClick={() => removerServico(index)}>Remover</button>}
           </div>
         ))}
         <div className='buttons_container_service'>
-        <button type="button" className='add_service_button' onClick={adicionarServico}>Adicionar Serviço</button>
-        <button type="submit" className = "confirm_button" onClick={handleSubmit}>Agendar</button>
+          <button type="button" className='add_service_button' onClick={adicionarServico}>Adicionar Serviço</button>
+          <button type="submit" className="confirm_button" onClick={handleSubmit}>Agendar</button>
         </div>
       </div>
     </div>

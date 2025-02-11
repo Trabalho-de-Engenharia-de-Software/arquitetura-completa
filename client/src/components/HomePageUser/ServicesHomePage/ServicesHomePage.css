@@ -33,7 +33,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     border: #D4AF37 3px solid;
  }
 
@@ -46,10 +46,48 @@
      1px -1px 0 #000,
     -1px  1px 0 #000,
      1px  1px 0 #000; /* Cor da borda */
+   
+
  }
 
- .Services_container_name{
+ .h1_container{
+    border-bottom: #000 solid 1.5px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 30%;
+ }
+
+ .Services_container_name1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    border-right: #000 solid 1.5px;
+    
+ }
+
+ .Services_container_name2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+ }
+
+ .service_name{
+    border-bottom: #000 solid 1.5px;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0px;
+ }
+
+ .Services_container_name1 p, .Services_container_name2 p{
+    color: white;
+    font-size: 6vh;
+    font-family: Roboto;
+    margin-top: 15px;
+;
  }
