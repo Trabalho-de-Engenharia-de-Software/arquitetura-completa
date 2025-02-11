@@ -5,7 +5,7 @@ from routes import barber_routes, cliente_routes, servico_routes, agendamento_ro
 
 # Initialize the Flask app
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app) # Enable CORS for all routes
 
 # Database configuration for AWS RDS
 app.config['SQLALCHEMY_DATABASE_URI'] = (

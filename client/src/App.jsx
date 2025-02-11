@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Index from './pages';
+import Index from './pages/Index';
 import LoginPage from './pages/LoginPage';
 import "./App.css"
 import SignInPage from './pages/SignInPage';

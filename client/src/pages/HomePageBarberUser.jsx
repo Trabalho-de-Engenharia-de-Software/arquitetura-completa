@@ -3,6 +3,7 @@ import AgendamentosBarber from '../components/BarberPage/Agendamentos/Agendament
 import BannerBarberPage from '../components/BarberPage/BannerBarberPage/BannerBarberPage'
 import FooterUsers from '../components/FooterGeral/FooterUsers'
 import HeaderHomePageUser from '../components/HomePageUser/HeaderHomePageUser/HeaderHomePageUser'
+import ReactVLibras from 'react-vlibras-plugin';
 
 export default function HomePageBarberUser() {
   return (
@@ -12,6 +13,7 @@ export default function HomePageBarberUser() {
         <AddServices/>
         <AgendamentosBarber/>
         <FooterUsers/>
+        <ReactVLibras/>
     </div>
   )
 }

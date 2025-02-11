@@ -1,5 +1,6 @@
 import React from 'react'
 import "./CSS/LoginPage.css"
+import ReactVLibras from 'react-vlibras-plugin';
 
 export default function LoginPage() {
   return (
@@ -28,6 +29,7 @@ export default function LoginPage() {
             <img src="./img/Logo.png" alt="Logo Barbearia" />
         </div>
       </div>
+      <ReactVLibras/>
     </div>
   )
 }

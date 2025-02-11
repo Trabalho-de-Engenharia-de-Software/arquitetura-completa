@@ -10,7 +10,7 @@ export default function JobService() {
         </div>
       </div>
       <>
-        <div class="angry-grid">
+        <div className="angry-grid">
           <div id="item-0">&nbsp;</div>
           <div id="item-1">&nbsp;</div>
           <div id="item-2">&nbsp;</div>

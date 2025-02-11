@@ -4,6 +4,7 @@ import BannerHomePageUser from '../components/HomePageUser/BannerHomePageUser/Ba
 import AtendimentosHomePage from '../components/HomePageUser/AtendimentosHomePage/AtendimentosHomePage'
 import ServicesHomePage from '../components/HomePageUser/ServicesHomePage/ServicesHomePage'
 import FooterUsers from '../components/FooterGeral/FooterUsers'
+import ReactVLibras from 'react-vlibras-plugin';
 
 export default function HomePageUser() {
   return (
@@ -13,6 +14,7 @@ export default function HomePageUser() {
       <AtendimentosHomePage/>
       <ServicesHomePage/>
       <FooterUsers/>
+      <ReactVLibras/>
     </div>
   )
 }
