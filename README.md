@@ -100,8 +100,7 @@ Werkzeug==2.3.6
 
 1️⃣ Clone este repositório
 
-git clone https://github.com/seu-usuario/cortaai.git
-cd cortaai
+git clone https://github.com/Trabalho-de-Engenharia-de-Software/arquitetura-completa/
 
 2️⃣ Crie um ambiente virtual e instale as dependências
 
