@@ -9,7 +9,7 @@ CORS(app) # Enable CORS for all routes
 
 # Database configuration for AWS RDS
 app.config['SQLALCHEMY_DATABASE_URI'] = (
-    'mysql+mysqlconnector://admin:Trab-eng4@database-barbearia.cv2ckye4yvpc.sa-east-1.rds.amazonaws.com:3306/Barbearia'
+    'mysql+mysqlconnector://admin:Trab?eng4@db-barber.culumbanz1fj.us-east-1.rds.amazonaws.com:3306/Barbearia'
 )
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Disable modification tracking
 
