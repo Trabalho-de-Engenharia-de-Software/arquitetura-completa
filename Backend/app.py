@@ -6,7 +6,7 @@ from flask_swagger_ui import get_swaggerui_blueprint
 
 # Initialize the Flask app
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app, origins=["http://ec2-44-192-51-109.compute-1.amazonaws.com:3000"], methods=["GET", "POST", "PUT", "DELETE"], supports_credentials=True)  # Enable CORS for all routes
 
 # Database configuration for AWS RDS
 app.config['SQLALCHEMY_DATABASE_URI'] = (
@@ -403,6 +403,5 @@ def swagger():
         }
     })
 
-# Run the app
 if __name__ == '__main__':
     app.run(debug=True)
