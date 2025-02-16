@@ -12,12 +12,18 @@ class AgendamentoModel(db.Model):
     id_servico = db.Column(db.Integer, db.ForeignKey('Servico.id_servico'))
     date = db.Column(db.Date)
     time = db.Column(db.Time)
+    status_agendamento = db.Column(db.String(50), default='Agendado')  # Novo campo
+    observacao_agendamento = db.Column(db.Text, nullable=True)  # Novo campo
+    descricao_agendamento = db.Column(db.Text, nullable=True)  # Novo campo
 
-    def __init__(self, cliente_id, id_servico, date, time):
+    def __init__(self, cliente_id, id_servico, date, time, status_agendamento='Agendado', observacao_agendamento=None, descricao_agendamento=None):
         self.cliente_id = cliente_id
         self.id_servico = id_servico
         self.date = date
         self.time = time
+        self.status_agendamento = status_agendamento
+        self.observacao_agendamento = observacao_agendamento
+        self.descricao_agendamento = descricao_agendamento
 
     def to_dict(self):
         return {
@@ -25,12 +31,23 @@ class AgendamentoModel(db.Model):
             'cliente_id': self.cliente_id,
             'id_servico': self.id_servico,
             'date': self.date.isoformat(),
-            'time': self.time.strftime('%H:%M:%S') if self.time else None
+            'time': self.time.strftime('%H:%M:%S') if self.time else None,
+            'status_agendamento': self.status_agendamento,  # Novo campo
+            'observacao_agendamento': self.observacao_agendamento,  # Novo campo
+            'descricao_agendamento': self.descricao_agendamento  # Novo campo
         }
 
     @staticmethod
-    def create_agendamento(cliente_id, id_servico, date, time):
-        agendamento = AgendamentoModel(cliente_id, id_servico, date, time)
+    def create_agendamento(cliente_id, id_servico, date, time, status_agendamento='Agendado', observacao_agendamento=None, descricao_agendamento=None):
+        agendamento = AgendamentoModel(
+            cliente_id=cliente_id,
+            id_servico=id_servico,
+            date=date,
+            time=time,
+            status_agendamento=status_agendamento,
+            observacao_agendamento=observacao_agendamento,
+            descricao_agendamento=descricao_agendamento
+        )
         db.session.add(agendamento)
         db.session.commit()
 

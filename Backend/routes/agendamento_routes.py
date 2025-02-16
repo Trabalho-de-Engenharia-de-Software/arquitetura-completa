@@ -13,11 +13,22 @@ def create_agendamento():
         id_servico = data.get('id_servico')
         date = data.get('date')
         time = data.get('time')
+        status_agendamento = data.get('status_agendamento', 'Agendado')  # Novo campo
+        observacao_agendamento = data.get('observacao_agendamento')  # Novo campo
+        descricao_agendamento = data.get('descricao_agendamento')  # Novo campo
 
         if not (cliente_id and id_servico and date and time):
-            return jsonify({"error": "Todos os campos são obrigatórios"}), 400
+            return jsonify({"error": "Todos os campos obrigatórios são necessários"}), 400
 
-        return AgendamentoController.criar_agendamento(cliente_id, id_servico, date, time)
+        return AgendamentoController.criar_agendamento(
+            cliente_id=cliente_id,
+            id_servico=id_servico,
+            date=date,
+            time=time,
+            status_agendamento=status_agendamento,
+            observacao_agendamento=observacao_agendamento,
+            descricao_agendamento=descricao_agendamento
+        )
     except Exception as e:
         error_traceback = traceback.format_exc()
         return jsonify({"error": str(e), "traceback": error_traceback}), 500

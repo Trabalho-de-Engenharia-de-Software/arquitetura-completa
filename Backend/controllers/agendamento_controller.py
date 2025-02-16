@@ -7,14 +7,22 @@ from extensions import db
 
 class AgendamentoController:
     @staticmethod
-    def criar_agendamento(cliente_id, id_servico, date, time):
+    def criar_agendamento(cliente_id, id_servico, date, time, status_agendamento='Agendado', observacao_agendamento=None, descricao_agendamento=None):
         """Cria um agendamento verificando a disponibilidade."""
         try:
             date = datetime.strptime(date, '%Y-%m-%d').date()
             time = datetime.strptime(time, '%H:%M').time()
 
             if AgendamentoModel.is_horario_disponivel(id_servico, date, time):
-                AgendamentoModel.create_agendamento(cliente_id, id_servico, date, time)
+                AgendamentoModel.create_agendamento(
+                    cliente_id=cliente_id,
+                    id_servico=id_servico,
+                    date=date,
+                    time=time,
+                    status_agendamento=status_agendamento,
+                    observacao_agendamento=observacao_agendamento,
+                    descricao_agendamento=descricao_agendamento
+                )
                 return jsonify({"message": "Agendamento criado com sucesso"}), 201
             else:
                 return jsonify({"error": "Horário indisponível"}), 400
