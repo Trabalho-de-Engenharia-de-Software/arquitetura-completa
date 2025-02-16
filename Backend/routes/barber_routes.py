@@ -1,46 +1,33 @@
 from flask import Blueprint, jsonify
 from controllers.barber_controller import BarberController
 
-# Define the Blueprint for barber routes
+# Define o Blueprint para as rotas de barbeiro
 barber_bp = Blueprint('barber', __name__)
 
 @barber_bp.route('/registro', methods=['POST'])
 def create_barber():
     """
-    Create a new barber.
+    Cria um novo barbeiro.
     """
-    try:
-        return BarberController.create_barber()
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    return BarberController.create_barber()
 
 @barber_bp.route('/lista', methods=['GET'])
 def get_all_barbers():
     """
-    Fetch all barbers.
+    Retorna todos os barbeiros.
     """
-    try:
-        return BarberController.get_all_barbers()
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    return BarberController.get_all_barbers()
 
 @barber_bp.route('/<int:barber_id>', methods=['GET'])
 def get_barber_by_id(barber_id):
     """
-    Fetch a specific barber by ID.
+    Retorna um barbeiro específico pelo ID.
     """
-    try:
-        return BarberController.get_barber_by_id(barber_id)
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-    
-# Rota de login
+    return BarberController.get_barber_by_id(barber_id)
+
 @barber_bp.route('/login', methods=['POST'])
 def login_barber():
     """
-    Login a barber.
+    Realiza o login de um barbeiro.
     """
-    try:
-        return BarberController.login_barber()
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    return BarberController.login_barber()
