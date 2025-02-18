@@ -1,7 +1,7 @@
 .FormAgendamento_Container {
   position: relative;
   width: 90%;
-  height: auto;
+  height: 100vh;
   border-radius: 25px;
   background-color: rgba(255, 255, 255, 0.404);
   margin-top: 15px;
@@ -15,7 +15,7 @@
 .resumo_container {
   display: flex;
   width: 50%;
-  height: 50vh;
+  height: auto;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
@@ -27,7 +27,7 @@
   justify-content: space-around;
   align-items: center;
   width: 60%;
-  height: auto;
+  height: 100%;
 }
 
 .h3_resumo {
@@ -131,4 +131,84 @@
     transition: 0.5s;
     background-color: #fff;
     border: #d4af37 2.5px solid;
+}
+
+
+.data_form_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Label_container {
+  margin-bottom: 20px;
+}
+
+.dias_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.dia_botao {
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.dia_botao.selected {
+  background-color: #4caf50;
+  color: white;
+}
+
+.horarios_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.horario_botao {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.horario_botao.selected {
+  background-color: #4caf50;
+  color: white;
+}
+
+.horario_botao.unavailable {
+  display: none;
+}
+
+.select_choice {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.confirm_button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.confirm_button:hover {
+  background-color: #45a049;
+}
+
+.horario_botao.indisponivel{
+  background-color: #ccc;
+  color: #777;
+  cursor: not-allowed;
 }

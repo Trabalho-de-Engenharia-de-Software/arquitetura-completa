@@ -57,3 +57,16 @@ class AgendamentoController:
                 return jsonify({"message": "Agendamento not found"}), 404
         except Exception as e:
             return jsonify({"error": "Um erro inesperado ocorreu"}), 500
+    
+    @staticmethod
+    def deletar_agendamento(agendamento_id):
+        """Deleta um agendamento pelo ID."""
+        try:
+            agendamento = AgendamentoModel.get_agendamento_by_id(agendamento_id)
+            if agendamento:
+                AgendamentoModel.delete_agendamento(agendamento_id)
+                return jsonify({"message": "Agendamento deletado com sucesso"}), 200
+            else:
+                return jsonify({"error": "Agendamento não encontrado"}), 404
+        except Exception as e:
+            return jsonify({"error": "Erro ao deletar agendamento", "message": str(e)}), 500

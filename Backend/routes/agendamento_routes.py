@@ -64,3 +64,10 @@ def get_agendamento_by_id(agendamento_id):
     Retorna um agendamento específico pelo ID.
     """
     return AgendamentoController.get_agendamento_by_id(agendamento_id)
+
+@agendamento_bp.route('deletar/<int:agendamento_id>', methods=['DELETE'])
+def delete_agendamento(agendamento_id):
+    """
+    Deleta um agendamento específico pelo ID.
+    """
+    return AgendamentoController.deletar_agendamento(agendamento_id)

@@ -93,3 +93,10 @@ class AgendamentoModel(db.Model):
         return AgendamentoModel.query.join(ServicoModel).filter(
             ServicoModel.barber_id == barber_id
         ).all()
+    
+    @staticmethod
+    def delete_agendamento(agendamento_id):
+        agendamento = AgendamentoModel.query.get(agendamento_id)
+        if agendamento:
+            db.session.delete(agendamento)
+            db.session.commit()
